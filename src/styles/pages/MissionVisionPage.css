@@ -1,0 +1,397 @@
+/* Mission and Vision page: statement cards and core-value pillars. */
+.mission-vision-panel {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(14px, 2vh, 24px);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(244, 185, 54, 0.18), transparent 26%),
+    radial-gradient(circle at 84% 22%, rgba(38, 132, 255, 0.12), transparent 28%),
+    radial-gradient(circle at 72% 80%, rgba(45, 188, 125, 0.11), transparent 30%),
+    #000;
+  border: 0;
+  box-shadow: none;
+  animation: none;
+  opacity: 1;
+}
+
+.mission-vision-panel .about-nav {
+  border: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    rgba(0, 0, 0, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.mission-vision-header .about-title-bar h1 {
+  font-size: clamp(32px, 2.35vw, 48px);
+}
+
+.mission-vision-stage {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(14px, 1.7vh, 22px);
+  padding: clamp(16px, 1.45vw, 28px) clamp(42px, 4vw, 78px);
+  border: 0;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+    rgba(7, 8, 10, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 22px 60px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+.mission-vision-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.mission-vision-intro p {
+  margin: 0;
+  color: #ffdd76;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(19px, 1.35vw, 26px);
+  font-weight: 800;
+}
+
+.mission-vision-intro button {
+  flex: 0 0 auto;
+  width: clamp(44px, 3.2vw, 54px);
+  height: clamp(44px, 3.2vw, 54px);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 219, 109, 0.72);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, #ffe27a, #dc8d36);
+  color: #160f06;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(220, 141, 54, 0.22);
+}
+
+.mission-vision-intro button svg {
+  width: 54%;
+  height: 54%;
+  stroke-width: 3;
+}
+
+.mission-vision-intro button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08) saturate(1.08);
+}
+
+.mission-vision-grid {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 1.6vw, 30px);
+}
+
+.mission-vision-card {
+  position: relative;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: clamp(64px, 5vw, 88px) minmax(0, 1fr);
+  gap: clamp(16px, 1.25vw, 24px);
+  align-content: start;
+  padding: clamp(24px, 2.1vw, 42px);
+  border: 0;
+  border-radius: 24px;
+  background:
+    linear-gradient(160deg, rgba(255, 236, 164, 0.13), rgba(255, 255, 255, 0.045) 48%, rgba(124, 49, 26, 0.16)),
+    rgba(13, 16, 19, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 42px rgba(0, 0, 0, 0.34);
+  overflow: hidden;
+}
+
+.vision-card {
+  background:
+    radial-gradient(circle at 6% 10%, rgba(255, 205, 69, 0.2), transparent 26%),
+    linear-gradient(145deg, rgba(16, 31, 36, 0.95), rgba(19, 19, 22, 0.94) 54%, rgba(59, 32, 18, 0.78));
+}
+
+.mission-card {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(69, 164, 255, 0.2), transparent 28%),
+    linear-gradient(145deg, rgba(13, 29, 42, 0.95), rgba(20, 19, 24, 0.94) 54%, rgba(55, 22, 31, 0.78));
+}
+
+.mission-vision-card::after {
+  content: '';
+  position: absolute;
+  right: -34px;
+  bottom: -46px;
+  width: 160px;
+  height: 160px;
+  border: 26px solid rgba(255, 224, 116, 0.065);
+  border-radius: 50%;
+}
+
+.mission-vision-icon {
+  position: relative;
+  z-index: 1;
+  width: clamp(62px, 4.6vw, 84px);
+  height: clamp(62px, 4.6vw, 84px);
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffe27a, #dc8d36);
+  color: #15100a;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.28);
+}
+
+.mission-card .mission-vision-icon {
+  background: linear-gradient(145deg, #73d6ff, #2d79ff);
+  color: #061426;
+}
+
+.mission-vision-icon svg {
+  width: 48%;
+  height: 48%;
+  stroke-width: 2.8;
+}
+
+.mission-vision-card span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #f6d67b;
+  font-size: clamp(15px, 1vw, 19px);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mission-vision-card h2 {
+  margin: 0 0 clamp(14px, 1.4vh, 20px);
+  color: #ffffff;
+  font-size: clamp(24px, 1.75vw, 34px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.mission-vision-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: rgba(255, 248, 226, 0.92);
+  font-size: clamp(15px, 1.02vw, 19px);
+  line-height: 1.48;
+  font-weight: 700;
+}
+
+.mission-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1vw, 18px);
+}
+
+.mission-flow-card {
+  position: relative;
+  min-width: 0;
+  padding: clamp(16px, 1.25vw, 22px);
+  border: 0;
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+    rgba(255, 255, 255, 0.055);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.mission-flow-card:nth-child(1) {
+  background: linear-gradient(145deg, rgba(248, 193, 59, 0.2), rgba(255, 255, 255, 0.04)), rgba(13, 23, 28, 0.82);
+}
+
+.mission-flow-card:nth-child(2) {
+  background: linear-gradient(145deg, rgba(72, 166, 255, 0.2), rgba(255, 255, 255, 0.04)), rgba(13, 23, 32, 0.82);
+}
+
+.mission-flow-card:nth-child(3) {
+  background: linear-gradient(145deg, rgba(69, 205, 142, 0.2), rgba(255, 255, 255, 0.04)), rgba(12, 25, 22, 0.82);
+}
+
+.mission-flow-card:nth-child(4) {
+  background: linear-gradient(145deg, rgba(241, 92, 78, 0.2), rgba(255, 255, 255, 0.04)), rgba(28, 18, 20, 0.82);
+}
+
+.mission-flow-step {
+  color: rgba(247, 216, 126, 0.36);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(28px, 2.2vw, 42px);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.mission-flow-icon {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(233, 199, 109, 0.18);
+  color: #f7d87e;
+}
+
+.mission-flow-card:nth-child(2) .mission-flow-icon {
+  background: rgba(72, 166, 255, 0.2);
+  color: #85d8ff;
+}
+
+.mission-flow-card:nth-child(3) .mission-flow-icon {
+  background: rgba(69, 205, 142, 0.2);
+  color: #80ebb4;
+}
+
+.mission-flow-card:nth-child(4) .mission-flow-icon {
+  background: rgba(241, 92, 78, 0.2);
+  color: #ff9a85;
+}
+
+.mission-flow-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.8;
+}
+
+.mission-flow-card h3 {
+  margin: 18px 0 8px;
+  color: #ffffff;
+  font-size: clamp(17px, 1.1vw, 21px);
+  line-height: 1.1;
+}
+
+.mission-flow-card p {
+  margin: 0;
+  color: rgba(255, 248, 226, 0.78);
+  font-size: clamp(13px, 0.88vw, 16px);
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+@media (max-height: 820px) and (min-width: 900px) {
+
+  .mission-vision-screen {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 6px;
+  }
+
+  .mission-vision-panel {
+    height: calc(100vh - 12px);
+    min-height: 0;
+    gap: 10px;
+    padding: 12px 28px;
+  }
+
+  .mission-vision-header.about-header {
+    min-height: 64px;
+  }
+
+  .mission-vision-header .about-logo-box {
+    width: 180px;
+    min-height: 64px;
+  }
+
+  .mission-vision-header .about-title-bar h1 {
+    font-size: 34px;
+  }
+
+  .mission-vision-stage {
+    gap: 10px;
+    padding: 14px 56px;
+    border-radius: 20px;
+  }
+
+  .mission-vision-intro p {
+    font-size: 19px;
+  }
+
+  .mission-vision-intro button {
+    width: 38px;
+    height: 38px;
+    min-height: 0;
+  }
+
+  .mission-vision-card {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px 22px;
+    border-radius: 18px;
+  }
+
+  .mission-vision-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+
+  .mission-vision-card h2 {
+    margin-bottom: 10px;
+    font-size: 26px;
+  }
+
+  .mission-vision-card p {
+    font-size: 15px;
+    line-height: 1.36;
+  }
+
+  .mission-flow {
+    gap: 10px;
+  }
+
+  .mission-flow-card {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .mission-flow-step {
+    font-size: 30px;
+  }
+
+  .mission-flow-icon {
+    right: 12px;
+    top: 12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .mission-flow-card h3 {
+    margin: 10px 0 6px;
+    font-size: 18px;
+  }
+
+  .mission-flow-card p {
+    font-size: 13px;
+    line-height: 1.25;
+  }
+
+  .mission-vision-panel .about-nav {
+    min-height: 82px;
+    padding: 8px 16px;
+  }
+
+  .mission-vision-panel .about-nav-item {
+    gap: 5px;
+  }
+
+  .mission-vision-panel .about-nav-item img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .mission-vision-panel .about-nav-item span {
+    font-size: 10px;
+  }
+}

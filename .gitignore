@@ -1,0 +1,15 @@
+node_modules/
+dist/
+release/
+desktop-release*/
+.npm-cache/
+.tmp-browser/
+tmp/
+
+*.log
+.tmp-*
+
+# Local design and browser verification captures
+srmb-*-1920.png
+nav-icons-sheet.png
+home-candidates.png

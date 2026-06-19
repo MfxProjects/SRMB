@@ -1,0 +1,93 @@
+/* Media gallery: responsive video tiles and full-screen playback overlay. */
+.gallery-panel {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(20px, 4.5vh, 43px);
+}
+
+.gallery-grid {
+  width: min(100%, 1820px);
+  justify-self: center;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2.8vh, 32px) clamp(28px, 3vw, 56px);
+  margin-top: 0;
+  padding: clamp(2px, 0.6vh, 6px) clamp(4px, 0.8vw, 14px) clamp(4px, 0.8vh, 10px);
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 10, 16, 0.9);
+  padding: clamp(20px, 3vw, 58px);
+}
+
+.gallery-lightbox video {
+  width: min(100%, 1400px);
+  max-height: 82vh;
+  background: #05070b;
+  border: 2px solid rgba(229, 198, 113, 0.72);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.54);
+}
+
+.gallery-lightbox-close {
+  position: fixed;
+  right: clamp(18px, 3vw, 54px);
+  bottom: clamp(18px, 2.4vw, 36px);
+  z-index: 62;
+  width: 48px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(229, 198, 113, 0.72);
+  border-radius: 50%;
+  background: rgba(20, 27, 39, 0.86);
+  color: var(--soft-gold);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (min-width: 1800px) and (min-height: 950px) {
+
+  .gallery-grid {
+    width: min(100%, 3000px);
+    gap: clamp(30px, 3vh, 58px) clamp(46px, 3.6vw, 132px);
+  }
+}
+
+@media (max-width: 1180px) {
+
+  .gallery-grid {
+    width: min(100%, 900px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 42px;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 8px 8px 4px;
+  }
+
+  .gallery-lightbox-close {
+    width: 42px;
+    font-size: 32px;
+  }
+
+}
+
+@media (min-width: 1500px) and (min-height: 800px) {
+
+  .gallery-grid {
+    gap: clamp(12px, 1.5vh, 18px) clamp(16px, 1.8vw, 26px);
+    padding: 0;
+  }
+}

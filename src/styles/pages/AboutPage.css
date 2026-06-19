@@ -1,0 +1,502 @@
+/* About page: company details, photo thumbnails, drag gestures, and lightbox. */
+.about-page .about-title-bar h1 {
+  color: var(--soft-gold);
+}
+
+.about-page .about-header,
+.title-simple-page .about-header {
+  grid-template-columns: minmax(0, 1fr) clamp(178px, 12vw, 230px);
+  min-height: clamp(76px, 8.8vh, 106px);
+  position: relative;
+}
+
+.about-page .about-title-bar,
+.title-simple-page .about-title-bar {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  z-index: 1;
+}
+
+.about-page .about-title-bar h1,
+.title-simple-page .about-title-bar h1 {
+  font-family: 'Palatino Linotype', Palatino, Constantia, Georgia, serif;
+  font-size: clamp(36px, 2.55vw, 49px);
+  letter-spacing: 1.5px;
+  line-height: 1;
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about-page .about-logo-box,
+.title-simple-page .about-logo-box {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  justify-self: end;
+  width: clamp(178px, 12vw, 230px);
+  min-height: clamp(76px, 8.8vh, 106px);
+  z-index: 2;
+}
+
+.about-page .about-copy-card h2 {
+  color: var(--soft-gold);
+}
+
+.about-content {
+  min-height: 0;
+  align-self: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(min(100%, 420px), 0.92fr);
+  align-items: stretch;
+  gap: clamp(34px, 1.95vw, 46px);
+}
+
+.photo-card {
+  min-width: 0;
+  min-height: 0;
+  border-radius: 20px;
+  background: var(--inner-panel);
+  border: 1px solid rgba(210, 157, 77, 0.34);
+  padding: clamp(16px, 0.95vw, 18px);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  box-shadow: 0 18px 40px rgba(10, 18, 30, 0.12);
+}
+
+.about-page .photo-card,
+.about-page .about-copy-card,
+.about-page .about-nav {
+  border: 0;
+}
+
+.about-page .photo-card,
+.about-page .about-copy-card {
+  box-shadow: 0 18px 38px rgba(10, 18, 30, 0.14);
+}
+
+.main-about-photo-button {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: zoom-in;
+  touch-action: pan-y;
+  user-select: none;
+  overflow: hidden;
+}
+
+.main-about-photo-button.dragging {
+  cursor: grabbing;
+}
+
+.main-about-photo {
+  width: 100%;
+  height: clamp(355px, 46vh, 455px);
+  object-fit: cover;
+  object-position: center 78%;
+  border: 1px solid #d09e4c;
+  display: block;
+  transform: translate3d(calc(var(--photo-drag-x, 0px) * 0.22), 0, 0);
+  transition: transform var(--motion-base) var(--motion-ease-soft), filter var(--motion-fast) linear;
+  pointer-events: none;
+  animation: photo-flash var(--motion-base) var(--motion-ease) both;
+  will-change: transform;
+}
+
+.about-page .main-about-photo {
+  border: 0;
+  border-radius: 14px;
+}
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 14, 21, 0.88);
+  padding: clamp(18px, 3vw, 54px);
+}
+
+.lightbox-image-wrap {
+  width: min(100%, 1420px);
+  height: min(78vh, 780px);
+  display: grid;
+  place-items: center;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+
+.lightbox-image-wrap.dragging {
+  cursor: grabbing;
+}
+
+.lightbox-image-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border: 2px solid rgba(233, 199, 109, 0.82);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  transform: translate3d(calc(var(--lightbox-drag-x, 0px) * 0.28), 0, 0);
+  transition: transform var(--motion-base) var(--motion-ease-soft);
+  animation: panel-enter var(--motion-base) var(--motion-ease) both;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.lightbox-close,
+.lightbox-nav,
+.lightbox-dots button {
+  cursor: pointer;
+}
+
+.lightbox-close {
+  position: fixed;
+  right: clamp(18px, 3vw, 54px);
+  bottom: clamp(18px, 2.4vw, 36px);
+  z-index: 42;
+  width: 48px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(233, 199, 109, 0.72);
+  border-radius: 50%;
+  background: rgba(20, 27, 39, 0.86);
+  color: var(--soft-gold);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  z-index: 42;
+  width: 54px;
+  height: 92px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(233, 199, 109, 0.58);
+  border-radius: 8px;
+  background: rgba(20, 27, 39, 0.72);
+  color: var(--soft-gold);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 56px;
+  line-height: 1;
+}
+
+.lightbox-prev {
+  left: clamp(14px, 2vw, 34px);
+}
+
+.lightbox-next {
+  right: clamp(14px, 2vw, 34px);
+}
+
+.lightbox-dots {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(18px, 2.4vw, 36px);
+  z-index: 42;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(20, 27, 39, 0.72);
+}
+
+.lightbox-dots button {
+  width: 11px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(233, 199, 109, 0.72);
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+}
+
+.lightbox-dots button.active {
+  background: var(--soft-gold);
+}
+
+.photo-card p {
+  margin: 11px 0 13px;
+  color: var(--muted-text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(12px, 0.84vw, 16px);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.thumb-row {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 0.72vw, 14px);
+}
+
+.thumb-button {
+  width: clamp(52px, 3.9vw, 75px);
+  aspect-ratio: 1.55;
+  padding: 0;
+  border: 2px solid rgba(83, 96, 111, 0.85);
+  border-radius: 3px;
+  background: var(--deep-panel);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) linear, box-shadow var(--motion-base) var(--motion-ease);
+}
+
+.thumb-button.active {
+  border-color: var(--soft-gold);
+  box-shadow: 0 0 0 2px rgba(226, 183, 88, 0.16);
+}
+
+.thumb-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--soft-gold);
+}
+
+.thumb-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.about-copy-card {
+  min-width: 0;
+  margin-top: 0;
+  border-radius: 22px;
+  background: linear-gradient(180deg, var(--inner-panel) 0%, var(--deep-panel) 100%);
+  border: 1px solid rgba(210, 157, 77, 0.26);
+  padding: clamp(34px, 3vw, 58px) clamp(30px, 3.1vw, 60px);
+  color: var(--body-text);
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  align-content: center;
+  box-shadow: 0 18px 40px rgba(10, 18, 30, 0.12);
+}
+
+.about-copy-card h2 {
+  margin: 0 0 clamp(24px, 2.2vw, 34px);
+  color: #f2c561;
+  font-size: clamp(30px, 2.18vw, 42px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.about-copy-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: clamp(19px, 2.1vh, 24px);
+}
+
+.about-copy-card li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--body-text);
+  font-size: clamp(15px, 1vw, 19px);
+  line-height: 1.38;
+  font-weight: 700;
+}
+
+.about-copy-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--soft-gold);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px var(--inner-panel);
+}
+
+.about-action-buttons {
+  margin-top: clamp(24px, 2.7vh, 34px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1vw, 18px);
+}
+
+.about-action-buttons button {
+  min-height: clamp(54px, 5.6vh, 72px);
+  padding: clamp(10px, 0.8vw, 14px) clamp(14px, 1vw, 20px);
+  border: 1px solid rgba(233, 199, 109, 0.68);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 232, 152, 0.16), rgba(255, 255, 255, 0.03)),
+    rgba(0, 0, 0, 0.18);
+  color: var(--soft-gold);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(14px, 0.95vw, 18px);
+  font-weight: 900;
+  line-height: 1.14;
+  text-align: center;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 12px 24px rgba(0, 0, 0, 0.14);
+}
+
+.about-action-buttons button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(233, 199, 109, 0.92);
+  filter: brightness(1.06);
+}
+
+@media (min-width: 1800px) and (min-height: 950px) {
+
+  .about-page .about-header,
+  .title-simple-page .about-header {
+    grid-template-columns: minmax(0, 1fr) clamp(230px, 11vw, 420px);
+    min-height: clamp(104px, 8vh, 172px);
+  }
+
+  .about-page .about-title-bar h1,
+  .title-simple-page .about-title-bar h1 {
+    font-size: clamp(52px, 2.35vw, 90px);
+  }
+
+  .about-page .about-logo-box,
+  .title-simple-page .about-logo-box {
+    width: clamp(230px, 11vw, 420px);
+    min-height: clamp(104px, 8vh, 172px);
+  }
+
+  .main-about-photo {
+    height: clamp(520px, 48vh, 920px);
+  }
+
+  .about-copy-card {
+    padding: clamp(46px, 2.4vw, 92px);
+  }
+
+  .about-copy-card h2 {
+    font-size: clamp(40px, 1.8vw, 68px);
+  }
+
+  .about-copy-card li {
+    font-size: clamp(20px, 0.95vw, 36px);
+  }
+}
+
+@media (min-width: 2200px) {
+
+  .about-page .about-header,
+  .title-simple-page .about-header {
+    grid-template-columns: minmax(0, 1fr) clamp(230px, 8vw, 310px);
+    min-height: clamp(106px, 7vh, 150px);
+  }
+
+  .about-page .about-title-bar h1,
+  .title-simple-page .about-title-bar h1 {
+    font-size: clamp(54px, 2.45vw, 82px);
+  }
+
+  .about-page .about-logo-box,
+  .title-simple-page .about-logo-box {
+    width: clamp(230px, 8vw, 310px);
+    min-height: clamp(106px, 7vh, 150px);
+  }
+
+  .about-content {
+    grid-template-columns: minmax(0, 1.15fr) minmax(520px, 0.85fr);
+    max-width: 2800px;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .main-about-photo {
+    height: clamp(520px, 46vh, 820px);
+  }
+
+  .about-copy-card li {
+    font-size: clamp(19px, 0.82vw, 28px);
+  }
+}
+
+@media (max-width: 1180px) {
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .main-about-photo {
+    height: auto;
+    aspect-ratio: 2.18;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .about-page .about-title-bar,
+  .title-simple-page .about-title-bar {
+    min-height: 64px;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .about-page .about-title-bar h1,
+  .title-simple-page .about-title-bar h1 {
+    font-size: clamp(30px, 8.5vw, 40px);
+    letter-spacing: 1px;
+  }
+
+  .photo-card,
+  .about-copy-card,
+  .about-nav {
+    border-radius: 16px;
+  }
+
+  .about-copy-card {
+    padding: 24px 18px;
+  }
+
+  .about-copy-card li {
+    font-size: 14px;
+  }
+
+  .lightbox-image-wrap {
+    height: 72vh;
+  }
+
+  .lightbox-nav {
+    display: none;
+  }
+
+  .lightbox-close {
+    width: 42px;
+    font-size: 32px;
+  }
+
+}
+
+@media (min-width: 2200px) {
+
+  .about-page .about-title-bar h1,
+  .title-simple-page .about-title-bar h1 {
+    font-size: clamp(52px, 2.8vw, 74px);
+  }
+}
+
+@media (min-width: 1500px) and (min-height: 800px) {
+
+  .main-about-photo {
+    height: clamp(290px, 36vh, 360px);
+  }
+}
+
+.about-title-bar,
+.title-simple-page .about-title-bar,
+.about-page .about-title-bar {
+  border: 0 !important;
+  box-shadow: none !important;
+}
