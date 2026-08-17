@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/pages/CsrPage.css';
+import '../styles/kiosk-overrides.css';
 import { GraduationCap, HandHeart, HeartPulse, Leaf, Sparkles } from 'lucide-react';
 import { PrimaryNav } from '../components/shared.jsx';
 
@@ -45,7 +46,11 @@ const initiatives = [
     icon: Leaf,
     accent: '#67c77a',
     fit: 'contain',
-    images: ['/assets/we%20care/greenFuture/greentnt-ban.png'],
+    images: [
+      '/assets/we%20care/greenFuture/greentnt-ban.png',
+      '/assets/we%20care/greenFuture/ChatGPT%20Image%20Jun%2025,%202026,%2001_24_01%20PM.png',
+      '/assets/we%20care/greenFuture/ChatGPT%20Image%20Jun%2025,%202026,%2001_23_52%20PM.png',
+    ],
   },
   {
     id: 'relief',

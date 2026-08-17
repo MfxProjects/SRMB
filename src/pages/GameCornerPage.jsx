@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import '../styles/pages/GameCornerPage.css';
+import '../styles/kiosk-overrides.css';
 import { flushSync } from 'react-dom';
 import { ArrowLeft, Building2, Check, Clapperboard, ExternalLink, Factory, Gamepad2, Hammer, Landmark, Map, Mic2, Newspaper, Play, RotateCcw, ShieldCheck, Sun, Trophy, X, Zap } from 'lucide-react';
 import { sections, cards, formatHomeDateTime, formatHomeDate, formatDigitalTime, formatLongDate, formatMonthTitle, toCalendarKey, calendarEvents, getCalendarMonthData, formatMediaTime, infrastructureVideo, corporateVideo, brandAmbassadorImage, corporateOfficeMapsUrl, corporateOfficeEmbedUrl, themes, themeIds, defaultTheme, aboutPhotos, boardDirectorSlides, navItems, contactDetails, galleryVideos, testimonyAssetPath, testimonyPosterPath, testimonyVideos, testimonyVideosPerSlide, productBrochurePage, productBrochurePages, productSlides, realnailSlides, projectSlides, certificateSlides, awardSlides, mediaAssetPath, mediaPosterPath, mediaCornerSections, sectionDetails, feedbackRatings, feedbackMoodOptions } from '../data/appData.jsx';
@@ -8,20 +9,20 @@ import { GoogleMapsIcon, PrimaryNav } from '../components/shared.jsx';
 // Static difficulty and product data used by the educational mini-games.
 const steelSurvivorBars = [
   {
-    id: 'srmb',
-    label: 'SRMB Fe-500D / 550D',
-    tag: 'Seismic Grade',
-    strength: 98,
-    flex: 94,
-    detail: 'Rib pattern, elongation and controlled rolling help the frame flex and hold.',
-  },
-  {
     id: 'generic',
-    label: 'Generic Low-grade Bar',
-    tag: 'Unverified',
+    label: 'Generic Low Grade',
+    tag: 'Unverified Bar',
     strength: 58,
     flex: 42,
     detail: 'Lower ductility and weak bond make the frame crack under heavy vibration.',
+  },
+  {
+    id: 'srmb',
+    label: 'SRMB Fe 500D',
+    tag: 'Seismic Grade',
+    strength: 98,
+    flex: 94,
+    detail: 'SRMB Fe 500D ribs, elongation and controlled rolling help the frame flex and hold.',
   },
 ];
 
@@ -243,9 +244,10 @@ const spotFakeSamples = [
   {
     id: 'srmb',
     label: 'Sample A',
-    name: 'SRMB TMT 550D',
+    name: 'SRMB Fe 500D',
     stamp: 'ISI IS:1786',
-    heat: 'HEAT SRMB-KOL-550D',
+    heat: 'HEAT SRMB-KOL-500D',
+    image: '/assets/game/srmb-fe500d-original.png',
     quality: 96,
     isFake: false,
     findings: {
@@ -642,7 +644,7 @@ function ProductMatchGame({ onBack, onNavigate }) {
 
 // Simulates earthquake resistance using the selected steel grade.
 function SteelSurvivorGame({ onBack, onNavigate }) {
-  const [selectedBarId, setSelectedBarId] = useState('srmb');
+  const [selectedBarId, setSelectedBarId] = useState('generic');
   const [quakeIndex, setQuakeIndex] = useState(1);
   const [testState, setTestState] = useState('idle');
   const [round, setRound] = useState(1);
@@ -678,7 +680,7 @@ function SteelSurvivorGame({ onBack, onNavigate }) {
 
   return (
     <main className="screen about-screen game-screen title-simple-page">
-      <section className={`about-panel game-panel steel-survivor-panel ${testState} ${survived ? 'survived' : 'failed'}`}>
+      <section className={`about-panel game-panel steel-survivor-panel selected-${selectedBarId} ${testState} ${survived ? 'survived' : 'failed'}`}>
         <header className="about-header">
           <div className="about-title-bar">
             <h1>STEEL SURVIVOR</h1>
@@ -703,10 +705,11 @@ function SteelSurvivorGame({ onBack, onNavigate }) {
                       resetTest();
                     }}
                   >
-                    <span className="bar-icon" aria-hidden="true">
+                    <span className={`bar-icon bar-icon-${bar.id}`} aria-hidden="true">
                       <i />
                       <i />
                       <i />
+                      {bar.id === 'srmb' && <em>SRMB</em>}
                     </span>
                     <strong>{bar.label}</strong>
                     <span>{bar.tag}</span>
@@ -1533,8 +1536,14 @@ function SpotFakeGame({ onBack, onNavigate }) {
                       <span className="sample-label">{sample.label}</span>
                       <strong>{sample.name}</strong>
                       <span className="steel-specimen" aria-hidden="true">
-                        <i />
-                        <i />
+                        {sample.image ? (
+                          <img className="original-srmb-bar-image" src={sample.image} alt="" draggable="false" />
+                        ) : (
+                          <>
+                            <i />
+                            <i />
+                          </>
+                        )}
                         <span className="bar-stamp">{sample.stamp}</span>
                         <span className="bar-heat">{sample.heat}</span>
                         <span className="bar-crack" />

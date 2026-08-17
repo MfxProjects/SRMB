@@ -112,15 +112,17 @@ export function formatMediaTime(value) {
   return `${minutes}:${seconds}`;
 }
 
-export const infrastructureVideo = '/assets/infrastructure/Our_esteemed_director_Mr._Ashish_Beriwala_made_a_mark_at_Visionaries_of_Viksit_Bharat_SRMB_1080P.mp4';
-export const corporateVideo = '/assets/corporate video/srmb corp film.mp4';
-export const brandAmbassadorImage = '/assets/brand/brand-ambassador-optimized.webp';
+export const infrastructureVideo = '/assets/gallery/Our_esteemed_director_Mr._Ashish_Beriwala_made_a_mark_at_Visionaries_of_Viksit_Bharat_SRMB_1080P.mp4';
+export const corporateVideo = '/assets/corporate av/srmb-corporate-av-compressed.mp4';
+export const newTvcVideo = '/assets/Media%20Corner/New%20TVC/FINAL%20LAUNCH%20AV%20SRMB%20TMT.mp4';
+export const brandAmbassadorImage = '/assets/brand%20ambasder/brand-ambassador-hero.jpg';
 export const corporateOfficeMapsUrl = 'https://www.google.com/maps/place/SRMB+House+(Newtown+Corporate+Office)/@22.581785,88.480767,17z/data=!3m1!4b1!4m6!3m5!1s0x3a020bd0368c8fd7:0xd91766f14522e2ad!8m2!3d22.581785!4d88.480767!16s%2Fg%2F11krywvtlt?entry=ttu&g_ep=EgoyMDI2MDQyNy4wIKXMDSoASAFQAw%3D%3D';
 export const corporateOfficeEmbedUrl = 'https://www.google.com/maps?q=SRMB%20House%20Newtown%20Corporate%20Office%2022.581785%2C88.480767&z=17&output=embed';
 
 // Themes map user-facing labels to the CSS variable sets in shared.css.
 export const themes = [
   { id: 'black', label: 'Dark Black', colors: ['#050507', '#f0c65f'] },
+  { id: 'golden-light', label: 'Golden Light', colors: ['#fffaf0', '#c89328'] },
   { id: 'steel', label: 'Steel', colors: ['#414b5f', '#e9c76d'] },
   { id: 'mono', label: 'B & W', colors: ['#ffffff', '#111111'] },
   { id: 'ivory', label: 'Ivory', colors: ['#f6efe2', '#c99554'] },
@@ -143,10 +145,11 @@ export const aboutPhotos = [
 
 export const boardDirectorSlides = [
   {
-    name: 'B.M. Beriwala',
+    name: 'Brij Mohan Beriwala',
     role: 'Chairman',
-    title: 'Message from Chairman Sir',
+    title: 'Message from Shri Brij Mohan Beriwala',
     image: '/assets/Boards%20of%20director%20corner/Mohan%20Ji-optimized.webp',
+    imageClassName: 'director-photo-mohan',
     message: [
       'Dear Stakeholders,',
       'Over the past seven decades, SRMB Srijan Private Limited has grown from a modest beginning into a trusted name in the Indian steel industry. This journey has been guided by a clear vision, strong values, and an unwavering commitment to quality, innovation, and responsibility. Our growth reflects not only the strength of our manufacturing capabilities but also the trust placed in us by our customers, stakeholders, and partners across the country. From supplying steel for essential infrastructure to contributing to projects of national importance, we take pride in being part of India\'s development story.',
@@ -154,7 +157,7 @@ export const boardDirectorSlides = [
       'At SRMB, growth has always been aligned with our commitment to society. Through our Corporate Social Responsibility initiatives, we actively support programs in education, healthcare, community development, and employee welfare. We believe that true progress is achieved when industrial development goes hand in hand with social upliftment, and we remain dedicated to contributing positively to the communities around us.',
       'Sustainability remains a key pillar of our long-term vision. We are steadily adopting environmentally responsible practices, improving energy efficiency, reducing emissions, and promoting the use of certified green steel. Our efforts in sustainable manufacturing, resource optimization, and responsible governance reflect our determination to build a future-ready organization that meets global standards while protecting the environment for the next generation.',
       'On behalf of the management, I extend my sincere gratitude to all our stakeholders - customers, employees, partners, and well-wishers - for their continued support and confidence. With the same spirit of dedication that has guided us for the last seventy years, we remain committed to building a stronger, more sustainable, and more progressive future together.',
-      '- B.M. Beriwala',
+      '- Brij Mohan Beriwala',
     ],
   },
   {
@@ -191,7 +194,8 @@ export const boardDirectorSlides = [
     name: 'Nikunj Beriwala',
     role: 'Director',
     title: 'Message from Shri Nikunj Beriwala',
-    image: '/assets/Boards%20of%20director%20corner/Nikunj%20Ji-optimized.webp',
+    image: '/assets/Boards%20of%20director%20corner/Nikunj%20Ji.png',
+    imageClassName: 'director-photo-nikunj',
     message: [
       'Dear Stakeholders,',
       'At SRMB Srijan Private Limited, our journey has always been guided by a strong commitment to quality, responsibility, and continuous improvement. As we move forward in an increasingly quality-conscious and sustainability-driven industrial environment, we remain focused on strengthening our manufacturing practices, ensuring consistent product performance, and maintaining the highest standards of governance across all operations. The trust placed in us by our stakeholders has been the driving force behind our efforts to build a manufacturing system that is reliable, transparent, and future-ready.',
@@ -221,12 +225,54 @@ export const contactDetails = [
 ];
 
 export const galleryVideos = [
-  '/assets/gallery/SRMB_ke_Saath_Banaye_Naya_Hindustan_Anthem_ft._Shaan_Music_by_Joy_Sarkar_Official_Launch_1080P.mp4',
-  '/assets/gallery/SRMB_TMT_Bars_The_Strength_Behind_Every_Champion_Dream_1080P.mp4',
-  '/assets/gallery/Three_World_Cup-winning_captains._One_unbeatable_choice._1080P.mp4',
-  '/assets/gallery/Pakad_Mazboot_Honi_Chahiye_TVC_SRMB_Steel_TMT_Bar_Wingrip_MS_Dhoni_Rohit_Sharma_1080p.mp4',
-  '/assets/gallery/Our_esteemed_director_Mr._Ashish_Beriwala_made_a_mark_at_Visionaries_of_Viksit_Bharat_SRMB_1080P.mp4',
-  '/assets/gallery/SRMB_RealFabrica_The_Real_Hero_Behind_Every_Construction_1080P.mp4',
+  {
+    title: 'SRMB Corporate AV',
+    src: corporateVideo,
+  },
+  {
+    title: 'SRMB RealEdge — Magic Again',
+    src: '/assets/gallery/[TubePull] SRMB_Realedge_Madhuri_Dixit_with_Saswata_Chatterjee_Create_Magic_Again.mp4',
+  },
+  {
+    title: 'Three World Cup Captains',
+    src: '/assets/gallery/Three_World_Cup-winning_captains._One_unbeatable_choice._1080P.mp4',
+    poster: '/assets/gallery/posters/gallery-3.webp',
+  },
+  {
+    title: 'Pakad Mazboot Honi Chahiye',
+    src: '/assets/gallery/Pakad_Mazboot_Honi_Chahiye_TVC_SRMB_Steel_TMT_Bar_Wingrip_MS_Dhoni_Rohit_Sharma_1080p.mp4',
+    poster: '/assets/gallery/posters/gallery-4.webp',
+  },
+  {
+    title: 'Visionaries of Viksit Bharat',
+    src: '/assets/gallery/Our_esteemed_director_Mr._Ashish_Beriwala_made_a_mark_at_Visionaries_of_Viksit_Bharat_SRMB_1080P.mp4',
+    poster: '/assets/gallery/posters/gallery-5.webp',
+  },
+  {
+    title: 'SRMB RealFabrica',
+    src: '/assets/gallery/SRMB_RealFabrica_The_Real_Hero_Behind_Every_Construction_1080P.mp4',
+    poster: '/assets/gallery/posters/gallery-6.webp',
+  },
+  {
+    title: 'SRMB TMT Launch AV',
+    src: newTvcVideo,
+    poster: mediaPosterPath('launch-av.png'),
+  },
+  {
+    title: 'SRMB Kai Po Che 35Sec Hindi',
+    src: mediaAssetPath('New TVC', 'SRMB KAI PO CHE 35Sec_HINDI_HD.mp4'),
+    poster: mediaPosterPath('kai-po-che.png'),
+  },
+  {
+    title: 'SRMB BTS',
+    src: mediaAssetPath('New TVC', 'MASTER_SRMB_BTS_190325 (1).mp4'),
+    poster: mediaPosterPath('bts.png'),
+  },
+  {
+    title: 'SRMB Audition 35Sec Hindi',
+    src: mediaAssetPath('New TVC', 'SRMB AUDITION 35Sec HINDI.mp4'),
+    poster: mediaPosterPath('audition.png'),
+  },
 ];
 
 export function testimonyAssetPath(fileName) {
@@ -276,14 +322,35 @@ export function productBrochurePages(pageNumbers) {
   return pageNumbers.map(productBrochurePage);
 }
 
+// RealFabrica uses its own brochure instead of the general SRMB product brochure.
+export function realFabricaBrochurePage(pageNumber) {
+  return {
+    number: pageNumber,
+    image: `/assets/Products/realfabrica-pages/page-${String(pageNumber).padStart(2, '0')}.jpg`,
+  };
+}
+
+export function realFabricaBrochurePages(pageNumbers) {
+  return pageNumbers.map(realFabricaBrochurePage);
+}
+
 // Product categories point to the brochure pages shown by ProductsPage.
 export const productSlides = [
   { label: 'SRMB TMT BARS', pages: productBrochurePages([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 20]) },
-  { label: 'SRMB REALNAIL', pages: productBrochurePages([12]) },
-  { label: 'SRMB REALRING', pages: productBrochurePages([12]) },
-  { label: 'SRMB REALWIRE', pages: productBrochurePages([12]) },
+  {
+    label: 'SRMB REALNAIL',
+    pages: productBrochurePages([12]).map((page) => ({ ...page, crop: 'realnail' })),
+  },
+  {
+    label: 'SRMB REALRING',
+    pages: productBrochurePages([12]).map((page) => ({ ...page, crop: 'realring' })),
+  },
+  {
+    label: 'SRMB REALWIRE',
+    pages: productBrochurePages([12]).map((page) => ({ ...page, crop: 'realwire' })),
+  },
   { label: 'SRMB REALEDGE', pages: productBrochurePages([16]) },
-  { label: 'SRMB REALFABRICA', pages: productBrochurePages([1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20]) },
+  { label: 'SRMB REALFABRICA', pages: realFabricaBrochurePages([1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20]) },
 ];
 
 export const realnailSlides = [
@@ -342,40 +409,6 @@ export function mediaPosterPath(fileName) {
 
 // Media groups define the menu, metadata, videos, and posters used by MediaCornerPage.
 export const mediaCornerSections = [
-  {
-    id: 'new-tvc',
-    title: 'New TVC',
-    kicker: 'Brand Campaign',
-    description: 'Latest SRMB commercial and campaign film.',
-    icon: Clapperboard,
-    accent: 'gold',
-    videos: [
-      {
-        title: 'SRMB TMT Launch AV',
-        meta: 'Launch Video',
-        src: mediaAssetPath('New TVC', 'FINAL LAUNCH AV SRMB TMT.mp4'),
-        poster: mediaPosterPath('launch-av.png'),
-      },
-      {
-        title: 'SRMB Kai Po Che 35Sec Hindi',
-        meta: 'New TVC',
-        src: mediaAssetPath('New TVC', 'SRMB KAI PO CHE 35Sec_HINDI_HD.mp4'),
-        poster: mediaPosterPath('kai-po-che.png'),
-      },
-      {
-        title: 'SRMB BTS',
-        meta: 'Behind The Scenes',
-        src: mediaAssetPath('New TVC', 'MASTER_SRMB_BTS_190325 (1).mp4'),
-        poster: mediaPosterPath('bts.png'),
-      },
-      {
-        title: 'SRMB Audition 35Sec Hindi',
-        meta: 'New TVC',
-        src: mediaAssetPath('New TVC', 'SRMB AUDITION 35Sec HINDI.mp4'),
-        poster: mediaPosterPath('audition.png'),
-      },
-    ],
-  },
   {
     id: 'press-released',
     title: 'Press Released',

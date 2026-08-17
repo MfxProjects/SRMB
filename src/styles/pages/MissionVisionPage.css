@@ -1,7 +1,7 @@
 /* Mission and Vision page: statement cards and core-value pillars. */
 .mission-vision-panel {
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: clamp(14px, 2vh, 24px);
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: clamp(10px, 1.4vh, 16px);
   background:
     radial-gradient(circle at 15% 15%, rgba(244, 185, 54, 0.18), transparent 26%),
     radial-gradient(circle at 84% 22%, rgba(38, 132, 255, 0.12), transparent 28%),
@@ -28,7 +28,7 @@
 .mission-vision-stage {
   min-height: 0;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: clamp(14px, 1.7vh, 22px);
   padding: clamp(16px, 1.45vw, 28px) clamp(42px, 4vw, 78px);
   border: 0;
@@ -57,7 +57,14 @@
   font-weight: 800;
 }
 
-.mission-vision-intro button {
+.mission-vision-back-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 clamp(42px, 4vw, 78px);
+}
+
+.mission-vision-back-row button {
   flex: 0 0 auto;
   width: clamp(44px, 3.2vw, 54px);
   height: clamp(44px, 3.2vw, 54px);
@@ -74,13 +81,13 @@
   box-shadow: 0 12px 24px rgba(220, 141, 54, 0.22);
 }
 
-.mission-vision-intro button svg {
+.mission-vision-back-row button svg {
   width: 54%;
   height: 54%;
   stroke-width: 3;
 }
 
-.mission-vision-intro button:hover {
+.mission-vision-back-row button:hover {
   transform: translateY(-2px);
   filter: brightness(1.08) saturate(1.08);
 }
@@ -317,7 +324,11 @@
     font-size: 19px;
   }
 
-  .mission-vision-intro button {
+  .mission-vision-back-row {
+    padding: 0 56px;
+  }
+
+  .mission-vision-back-row button {
     width: 38px;
     height: 38px;
     min-height: 0;

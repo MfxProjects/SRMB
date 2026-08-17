@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import '../styles/pages/MediaCornerPage.css';
+import '../styles/kiosk-overrides.css';
 import { flushSync } from 'react-dom';
 import { ArrowLeft, Building2, Check, Clapperboard, ExternalLink, Factory, Gamepad2, Hammer, Landmark, Map, Mic2, Newspaper, Play, RotateCcw, ShieldCheck, Sun, Trophy, X, Zap } from 'lucide-react';
 import { sections, cards, formatHomeDateTime, formatHomeDate, formatDigitalTime, formatLongDate, formatMonthTitle, toCalendarKey, calendarEvents, getCalendarMonthData, formatMediaTime, infrastructureVideo, corporateVideo, brandAmbassadorImage, corporateOfficeMapsUrl, corporateOfficeEmbedUrl, themes, themeIds, defaultTheme, aboutPhotos, boardDirectorSlides, navItems, contactDetails, galleryVideos, testimonyAssetPath, testimonyPosterPath, testimonyVideos, testimonyVideosPerSlide, productBrochurePage, productBrochurePages, productSlides, realnailSlides, projectSlides, certificateSlides, awardSlides, mediaAssetPath, mediaPosterPath, mediaCornerSections, sectionDetails, feedbackRatings, feedbackMoodOptions } from '../data/appData.jsx';
@@ -18,6 +19,42 @@ export default function MediaCornerPage({ onNavigate }) {
   const activeSection = mediaCornerSections.find((section) => section.id === activeSectionId) || mediaCornerSections[0];
   const activeVideo = activeSection.videos[activeVideoIndex] || activeSection.videos[0];
   const shouldAutoplayActiveVideo = activeSectionId === mediaCornerSections[0].id && activeVideoIndex === 0;
+
+  function pauseCurrentVideo() {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    video.pause();
+  }
+
+  function startActiveVideo({ muted = false } = {}) {
+    const video = videoRef.current;
+
+    if (!video || typeof video.play !== 'function') {
+      return;
+    }
+
+    video.muted = muted;
+    video.defaultMuted = muted;
+    video.currentTime = 0;
+
+    const playWhenReady = () => {
+      video.play().catch(() => {
+        // Native controls remain visible if the browser asks for a second tap.
+      });
+    };
+
+    if (video.readyState >= 2) {
+      playWhenReady();
+      return;
+    }
+
+    video.addEventListener('loadeddata', playWhenReady, { once: true });
+    video.load();
+  }
 
   useEffect(() => {
     const video = videoRef.current;
@@ -54,30 +91,34 @@ export default function MediaCornerPage({ onNavigate }) {
     autoplaySelectedVideoRef.current = false;
   }, [activeVideo.src, shouldAutoplayActiveVideo]);
 
+  useEffect(() => pauseCurrentVideo, []);
+
   function showSection(sectionId) {
-    autoplaySelectedVideoRef.current = false;
-    setActiveSectionId(sectionId);
-    setActiveVideoIndex(0);
+    pauseCurrentVideo();
+    autoplaySelectedVideoRef.current = true;
+
+    flushSync(() => {
+      setActiveSectionId(sectionId);
+      setActiveVideoIndex(0);
+    });
+
+    startActiveVideo();
   }
 
   function playSelectedVideo(index) {
+    pauseCurrentVideo();
     autoplaySelectedVideoRef.current = true;
 
     flushSync(() => {
       setActiveVideoIndex(index);
     });
 
-    const video = videoRef.current;
-    if (!video || typeof video.play !== 'function') {
-      return;
-    }
+    startActiveVideo();
+  }
 
-    video.muted = false;
-    video.defaultMuted = false;
-    video.currentTime = 0;
-    video.play().catch(() => {
-      // Native controls stay visible if the browser needs a second tap to start playback.
-    });
+  function handleNavigate(nextPage) {
+    pauseCurrentVideo();
+    onNavigate(nextPage);
   }
 
   function syncVideoDuration(video) {
@@ -178,7 +219,7 @@ export default function MediaCornerPage({ onNavigate }) {
           </div>
         </section>
 
-        <PrimaryNav activePage="media-corner" onNavigate={onNavigate} />
+        <PrimaryNav activePage="media-corner" onNavigate={handleNavigate} />
       </section>
     </main>
   );

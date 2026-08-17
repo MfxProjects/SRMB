@@ -1,0 +1,765 @@
+/* Final large-screen guardrails for fixed-height kiosk/TV layouts. */
+@media (min-width: 1500px) and (min-height: 800px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  .about-screen {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    padding: 6px;
+    overflow: hidden !important;
+    place-items: start center;
+  }
+
+  .about-panel {
+    width: calc(100vw - 12px) !important;
+    max-width: none;
+    height: calc(100vh - 12px) !important;
+    max-height: calc(100vh - 12px);
+    min-height: 0 !important;
+    grid-template-rows: clamp(70px, 8.8vh, 104px) minmax(0, 1fr) clamp(88px, 10.8vh, 122px);
+    gap: clamp(8px, 1.25vh, 16px);
+    padding: clamp(10px, 1.15vh, 16px) clamp(18px, 1.5vw, 32px);
+    overflow: hidden !important;
+  }
+
+  .about-header,
+  .about-page .about-header,
+  .title-simple-page .about-header,
+  .contact-panel .about-header {
+    min-height: 0;
+    height: auto;
+    grid-template-columns: minmax(0, 1fr) clamp(162px, 10.2vw, 220px);
+    align-self: stretch;
+  }
+
+  .about-title-bar,
+  .about-page .about-title-bar,
+  .title-simple-page .about-title-bar {
+    align-self: stretch;
+  }
+
+  .about-title-bar h1,
+  .about-page .about-title-bar h1,
+  .title-simple-page .about-title-bar h1,
+  .contact-panel .about-title-bar h1 {
+    font-size: clamp(30px, 2.35vw, 52px);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .about-logo-box,
+  .about-page .about-logo-box,
+  .title-simple-page .about-logo-box,
+  .contact-panel .about-logo-box {
+    width: auto;
+    min-height: 0;
+    align-self: stretch;
+    justify-self: stretch;
+  }
+
+  .about-nav {
+    min-height: 0;
+    height: 100%;
+    align-self: stretch;
+    grid-template-columns: repeat(15, minmax(0, 1fr));
+    gap: clamp(6px, 0.75vw, 12px);
+    padding: clamp(8px, 0.95vh, 12px) clamp(12px, 1.4vw, 28px);
+    overflow: hidden;
+  }
+
+  .about-nav-item {
+    gap: clamp(4px, 0.62vh, 7px);
+  }
+
+  .about-nav-item img {
+    width: clamp(28px, 2.25vw, 44px);
+    height: clamp(28px, 2.25vw, 44px);
+  }
+
+  .about-nav-item span {
+    font-size: clamp(9px, 0.58vw, 12px);
+    line-height: 1;
+  }
+
+  .about-content,
+  .board-directors-stage,
+  .mission-vision-stage,
+  .products-stage,
+  .infrastructure-content,
+  .projects-content,
+  .certificate-stage,
+  .gallery-grid,
+  .contact-content,
+  .testimony-content,
+  .media-corner-stage,
+  .csr-content,
+  .sustainability-content,
+  .simple-section-content,
+  .game-menu-stage,
+  .product-match-stage,
+  .steel-game-stage,
+  .mill-rush-stage,
+  .kolkata-game-stage,
+  .detective-game-stage {
+    min-height: 0;
+    max-height: 100%;
+    align-self: stretch;
+    overflow: hidden;
+  }
+
+  .about-content {
+    align-items: stretch;
+    gap: clamp(18px, 1.5vw, 34px);
+  }
+
+  .main-about-photo {
+    height: clamp(250px, 32vh, 340px);
+  }
+
+  .about-copy-card {
+    padding: clamp(20px, 1.8vw, 38px);
+  }
+
+  .about-copy-card h2 {
+    margin-bottom: clamp(14px, 1.5vh, 22px);
+    font-size: clamp(26px, 1.75vw, 38px);
+  }
+
+  .about-copy-card ul {
+    gap: clamp(11px, 1.35vh, 18px);
+  }
+
+  .about-action-buttons {
+    margin-top: clamp(14px, 1.8vh, 24px);
+  }
+
+  .products-stage,
+  .projects-content,
+  .infrastructure-content,
+  .certificate-stage,
+  .testimony-content,
+  .media-corner-stage,
+  .gallery-grid,
+  .contact-content,
+  .sustainability-content,
+  .csr-content {
+    height: 100%;
+  }
+
+  .products-panel,
+  .projects-panel,
+  .contact-panel,
+  .gallery-panel,
+  .testimony-panel,
+  .media-corner-panel,
+  .csr-panel,
+  .sustainability-panel,
+  .game-panel {
+    grid-template-rows: clamp(70px, 8.8vh, 104px) minmax(0, 1fr) clamp(88px, 10.8vh, 122px);
+    gap: clamp(8px, 1.25vh, 16px);
+  }
+
+  .product-menu {
+    gap: clamp(8px, 1vh, 14px);
+  }
+
+  .product-menu button {
+    min-height: clamp(42px, 5vh, 58px);
+  }
+
+  .product-gallery {
+    height: clamp(220px, 40vh, 420px);
+    max-height: 100%;
+  }
+
+  .project-carousel {
+    min-height: 0;
+    height: min(100%, clamp(250px, 39vh, 380px));
+    margin-top: 0;
+  }
+
+  .project-strip {
+    height: clamp(230px, 35vh, 340px);
+  }
+
+  .projects-content h2,
+  .project-pager,
+  .small-pager {
+    margin-top: clamp(8px, 1.1vh, 14px);
+  }
+
+  .gallery-grid,
+  .testimony-slide-page {
+    gap: clamp(10px, 1.35vh, 18px) clamp(14px, 1.7vw, 28px);
+  }
+
+  .contact-panel .feedback-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+    gap: clamp(22px, 3vw, 70px);
+    padding-inline: clamp(14px, 2.4vw, 56px);
+  }
+
+  .contact-us-card,
+  .mood-feedback-card {
+    min-height: 0;
+    padding: clamp(18px, 1.8vw, 34px);
+  }
+
+  .mood-feedback-card {
+    width: min(100%, clamp(520px, 36vw, 740px)) !important;
+    min-height: clamp(540px, 56vh, 660px) !important;
+    max-height: calc(100% - clamp(14px, 2vh, 28px)) !important;
+    align-self: center !important;
+    justify-self: center !important;
+    align-content: center !important;
+    padding: clamp(16px, 1.35vw, 28px) !important;
+  }
+
+  .mood-card-top {
+    padding-bottom: clamp(10px, 1.1vh, 16px) !important;
+  }
+
+  .feedback-contact-grid textarea {
+    min-height: clamp(76px, 9vh, 116px);
+  }
+
+  .mood-heading {
+    gap: clamp(5px, 0.7vh, 8px) !important;
+    margin-top: clamp(10px, 1.25vh, 16px) !important;
+  }
+
+  .mood-heading h2 {
+    font-size: clamp(22px, 1.8vw, 32px) !important;
+  }
+
+  .mood-heading p {
+    max-width: 390px !important;
+    font-size: clamp(12px, 0.8vw, 14px) !important;
+    line-height: 1.35 !important;
+  }
+
+  .mood-rating {
+    min-height: clamp(70px, 8.5vh, 98px) !important;
+    margin-top: clamp(10px, 1.25vh, 16px) !important;
+  }
+
+  .contact-form-card .mood-rating button {
+    min-height: clamp(64px, 7.8vh, 88px) !important;
+  }
+
+  .mood-rating .feedback-emoji {
+    width: clamp(38px, 3.3vw, 56px) !important;
+    font-size: clamp(22px, 1.8vw, 30px) !important;
+  }
+
+  .mood-rating button.active .feedback-emoji {
+    width: clamp(58px, 4.8vw, 82px) !important;
+    font-size: clamp(30px, 2.55vw, 44px) !important;
+  }
+
+  .mood-comment-grid textarea {
+    min-height: clamp(70px, 8.6vh, 108px) !important;
+    padding: clamp(12px, 1vw, 16px) !important;
+  }
+
+  .contact-form-card .mood-submit-button {
+    min-height: clamp(42px, 5vh, 56px) !important;
+    margin-top: clamp(10px, 1.25vh, 16px) !important;
+  }
+
+  .media-corner-stage {
+    grid-template-rows: minmax(0, 1fr) auto;
+    padding: clamp(10px, 1vw, 18px) clamp(24px, 2.6vw, 52px);
+  }
+
+  .media-video-list button {
+    min-height: clamp(86px, 10vh, 126px);
+  }
+
+  .csr-content {
+    grid-template-columns: minmax(180px, 0.5fr) minmax(0, 2fr) minmax(250px, 0.9fr);
+  }
+
+  .csr-story {
+    padding: clamp(14px, 1.3vw, 24px);
+  }
+
+  .csr-story-rule,
+  .csr-story-tags {
+    margin-block: clamp(10px, 1.2vh, 16px);
+  }
+
+  .sustainability-content {
+    grid-template-columns: clamp(190px, 13vw, 270px) minmax(0, 1fr);
+  }
+
+  .sustainability-choice {
+    border-radius: 18px;
+    padding: clamp(13px, 1.1vw, 20px);
+  }
+
+  .sustainability-choice-icon {
+    width: clamp(44px, 3.3vw, 64px);
+    border-radius: 16px;
+  }
+
+  .sustainability-document-stage {
+    padding: clamp(10px, 1vw, 18px);
+  }
+
+  .game-menu-stage {
+    width: 100%;
+    grid-template-columns: minmax(210px, 0.72fr) repeat(5, minmax(130px, 0.62fr));
+    gap: clamp(10px, 1.05vw, 18px);
+    padding: 0;
+  }
+
+  .game-choice-card {
+    min-height: 0;
+    padding: clamp(16px, 1.25vw, 26px);
+  }
+
+  .game-choice-card strong {
+    font-size: clamp(22px, 1.65vw, 34px);
+  }
+}
+
+/* Shared kiosk fit for all internal pages on 16:9 TV screens and scaled Windows displays. */
+@media (min-width: 1100px) and (min-height: 650px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  .about-screen {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    padding: clamp(6px, 0.55vw, 10px);
+    overflow: hidden !important;
+    place-items: start center;
+  }
+
+  .about-panel {
+    width: calc(100vw - clamp(12px, 1.1vw, 20px)) !important;
+    max-width: none;
+    height: calc(100dvh - clamp(12px, 1.1vw, 20px)) !important;
+    min-height: 0 !important;
+    max-height: none;
+    grid-template-rows: clamp(58px, 8vh, 92px) minmax(0, 1fr) clamp(76px, 10vh, 106px) !important;
+    gap: clamp(6px, 1vh, 12px) !important;
+    padding: clamp(8px, 1.1vh, 12px) clamp(14px, 1.5vw, 26px) !important;
+    border: 2px solid var(--gold) !important;
+    box-shadow: 0 0 0 3px var(--panel-shadow) !important;
+    overflow: hidden !important;
+  }
+
+  .board-directors-panel,
+  .mission-vision-panel {
+    grid-template-rows: clamp(58px, 8vh, 92px) minmax(0, 1fr) clamp(44px, 5.6vh, 62px) clamp(76px, 10vh, 106px) !important;
+  }
+
+  .about-header,
+  .about-page .about-header,
+  .title-simple-page .about-header,
+  .contact-panel .about-header {
+    min-height: 0;
+    height: auto;
+    grid-template-columns: minmax(0, 1fr) clamp(150px, 12vw, 214px);
+    align-self: stretch;
+  }
+
+  .about-title-bar,
+  .about-page .about-title-bar,
+  .title-simple-page .about-title-bar {
+    align-self: stretch;
+  }
+
+  .about-title-bar h1,
+  .about-page .about-title-bar h1,
+  .title-simple-page .about-title-bar h1,
+  .contact-panel .about-title-bar h1 {
+    font-size: clamp(32px, 3vw, 52px);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .about-logo-box,
+  .about-page .about-logo-box,
+  .title-simple-page .about-logo-box,
+  .contact-panel .about-logo-box {
+    width: auto;
+    min-height: 0;
+    align-self: stretch;
+    justify-self: stretch;
+  }
+
+  .contact-panel .about-logo-box {
+    width: clamp(170px, 10vw, 230px) !important;
+    height: clamp(52px, 5.5vh, 70px) !important;
+    max-height: clamp(52px, 5.5vh, 70px) !important;
+    align-self: center !important;
+    justify-self: end !important;
+  }
+
+  .contact-panel .about-logo-box img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .about-nav {
+    grid-row: -2 / -1 !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    align-self: stretch !important;
+    justify-self: stretch !important;
+    grid-template-columns: repeat(15, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    justify-items: center !important;
+    gap: clamp(5px, 0.75vw, 10px) !important;
+    margin: 0 !important;
+    padding: clamp(7px, 0.9vh, 11px) clamp(10px, 1.3vw, 24px) !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+
+  .about-nav-item {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    align-content: center !important;
+    grid-template-rows: auto auto !important;
+    gap: clamp(1px, 0.22vh, 3px) !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  .about-nav-item img {
+    width: clamp(26px, 2.1vw, 40px) !important;
+    height: clamp(26px, 2.1vw, 40px) !important;
+  }
+
+  .about-nav-item span {
+    min-height: 1em !important;
+    font-size: clamp(8px, 0.58vw, 11px) !important;
+    line-height: 1 !important;
+  }
+
+  .about-content,
+  .board-directors-stage,
+  .mission-vision-stage,
+  .products-stage,
+  .infrastructure-content,
+  .projects-content,
+  .certificate-stage,
+  .gallery-grid,
+  .contact-content,
+  .feedback-content,
+  .testimony-content,
+  .media-corner-stage,
+  .csr-content,
+  .sustainability-content,
+  .simple-section-content,
+  .group-companies-stage,
+  .game-menu-stage,
+  .product-match-stage,
+  .steel-game-stage,
+  .mill-rush-stage,
+  .kolkata-game-stage,
+  .detective-game-stage {
+    min-height: 0;
+    height: 100%;
+    max-height: 100%;
+    align-self: stretch;
+    overflow: hidden;
+  }
+
+  .director-slide-bar,
+  .mission-vision-back-row {
+    min-height: 0;
+    height: 100%;
+    padding-block: 0;
+  }
+
+  .mission-vision-back-row {
+    padding-inline: clamp(18px, 2vw, 34px);
+  }
+
+  .director-member-tabs {
+    min-height: 0;
+  }
+}
+
+@media (min-width: 1100px) and (max-height: 760px) {
+  .about-screen {
+    padding: 6px;
+  }
+
+  .about-panel {
+    width: calc(100vw - 12px) !important;
+    height: calc(100dvh - 12px) !important;
+    grid-template-rows: clamp(52px, 7.4vh, 64px) minmax(0, 1fr) clamp(64px, 10vh, 78px) !important;
+    gap: 6px !important;
+    padding: 6px 16px !important;
+  }
+
+  .board-directors-panel,
+  .mission-vision-panel {
+    grid-template-rows: clamp(52px, 7.4vh, 64px) minmax(0, 1fr) clamp(38px, 5.4vh, 48px) clamp(64px, 10vh, 78px) !important;
+  }
+
+  .about-header,
+  .about-page .about-header,
+  .title-simple-page .about-header,
+  .contact-panel .about-header {
+    grid-template-columns: minmax(0, 1fr) clamp(134px, 11vw, 170px);
+  }
+
+  .contact-panel .about-logo-box {
+    width: clamp(150px, 11vw, 190px) !important;
+    height: clamp(46px, 6vh, 58px) !important;
+    max-height: clamp(46px, 6vh, 58px) !important;
+    align-self: center !important;
+    justify-self: end !important;
+  }
+
+  .contact-panel .about-logo-box img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .about-title-bar h1,
+  .about-page .about-title-bar h1,
+  .title-simple-page .about-title-bar h1,
+  .contact-panel .about-title-bar h1 {
+    font-size: clamp(28px, 3vw, 40px);
+  }
+
+  .about-nav-item img {
+    width: clamp(23px, 2.1vw, 32px) !important;
+    height: clamp(23px, 2.1vw, 32px) !important;
+  }
+
+  .about-nav-item span {
+    font-size: clamp(7px, 0.7vw, 9px) !important;
+  }
+}
+
+/* About page kiosk fit: keep the full page visible on 16:9 TV screens, even with display scaling. */
+@media (min-width: 1100px) and (min-height: 650px) {
+  .about-page.about-screen {
+    height: 100dvh;
+    min-height: 0;
+    padding: clamp(6px, 0.55vw, 10px);
+    overflow: hidden !important;
+  }
+
+  .about-page .about-panel {
+    width: calc(100vw - clamp(12px, 1.1vw, 20px)) !important;
+    height: calc(100dvh - clamp(12px, 1.1vw, 20px)) !important;
+    min-height: 0 !important;
+    max-height: none;
+    grid-template-rows: clamp(58px, 8vh, 92px) minmax(0, 1fr) clamp(76px, 10vh, 106px);
+    gap: clamp(6px, 1vh, 12px);
+    padding: clamp(8px, 1.1vh, 12px) clamp(14px, 1.5vw, 26px);
+    overflow: hidden !important;
+  }
+
+  .about-page .about-header {
+    min-height: 0;
+    height: auto;
+    grid-template-columns: minmax(0, 1fr) clamp(150px, 12vw, 214px);
+    align-self: stretch;
+  }
+
+  .about-page .about-title-bar,
+  .about-page .about-logo-box {
+    align-self: stretch;
+  }
+
+  .about-page .about-title-bar h1 {
+    font-size: clamp(32px, 3vw, 52px);
+    line-height: 1;
+  }
+
+  .about-page .about-logo-box {
+    width: auto;
+    min-height: 0;
+    justify-self: stretch;
+  }
+
+  .about-page .about-content {
+    min-height: 0;
+    height: 100%;
+    align-self: stretch;
+    align-items: stretch;
+    grid-template-columns: minmax(0, 1.16fr) minmax(360px, 0.84fr);
+    gap: clamp(14px, 1.7vw, 26px);
+    overflow: hidden;
+  }
+
+  .about-page .photo-card,
+  .about-page .about-copy-card {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .about-page .about-video-card {
+    padding: clamp(6px, 0.75vw, 10px);
+  }
+
+  .about-page .about-corporate-video {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .about-page .about-copy-card {
+    align-content: center;
+    padding: clamp(16px, 2.2vw, 34px);
+    overflow: hidden;
+  }
+
+  .about-page .about-copy-card h2 {
+    margin-bottom: clamp(12px, 1.5vh, 20px);
+    font-size: clamp(26px, 2.5vw, 42px);
+  }
+
+  .about-page .about-copy-card ul {
+    gap: clamp(10px, 1.35vh, 16px);
+  }
+
+  .about-page .about-copy-card li {
+    padding-left: clamp(22px, 1.7vw, 30px);
+    font-size: clamp(14px, 1.2vw, 19px);
+    line-height: 1.28;
+  }
+
+  .about-page .about-copy-card li::before {
+    width: clamp(9px, 0.75vw, 12px);
+    height: clamp(9px, 0.75vw, 12px);
+    border-width: 3px;
+  }
+
+  .about-page .about-action-buttons {
+    margin-top: clamp(12px, 1.7vh, 22px);
+    gap: clamp(10px, 1vw, 16px);
+  }
+
+  .about-page .about-action-buttons button {
+    min-height: clamp(44px, 5.2vh, 62px);
+    padding: clamp(8px, 0.75vw, 12px);
+    font-size: clamp(12px, 1vw, 17px);
+  }
+
+  .about-page .about-nav {
+    min-height: 0;
+    height: 100%;
+    align-self: stretch;
+    grid-template-columns: repeat(15, minmax(0, 1fr));
+    gap: clamp(5px, 0.75vw, 10px);
+    padding: clamp(7px, 0.9vh, 11px) clamp(10px, 1.3vw, 24px);
+    overflow: hidden;
+  }
+
+  .about-page .about-nav-item {
+    align-content: center;
+    grid-template-rows: auto auto;
+    gap: clamp(1px, 0.22vh, 3px);
+  }
+
+  .about-page .about-nav-item img {
+    width: clamp(26px, 2.1vw, 40px);
+    height: clamp(26px, 2.1vw, 40px);
+  }
+
+  .about-page .about-nav-item span {
+    font-size: clamp(8px, 0.58vw, 11px);
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1100px) and (max-height: 760px) {
+  .about-page .about-panel {
+    grid-template-rows: clamp(52px, 7.4vh, 64px) minmax(0, 1fr) clamp(64px, 10vh, 78px);
+    gap: 6px;
+    padding: 6px 16px;
+  }
+
+  .about-page .about-header {
+    grid-template-columns: minmax(0, 1fr) clamp(134px, 11vw, 170px);
+  }
+
+  .about-page .about-title-bar h1 {
+    font-size: clamp(28px, 3vw, 40px);
+  }
+
+  .about-page .about-copy-card {
+    padding: 14px clamp(16px, 1.8vw, 24px);
+  }
+
+  .about-page .about-copy-card h2 {
+    margin-bottom: 10px;
+    font-size: clamp(22px, 2.5vw, 30px);
+  }
+
+  .about-page .about-copy-card ul {
+    gap: 8px;
+  }
+
+  .about-page .about-copy-card li {
+    padding-left: 20px;
+    font-size: clamp(12px, 1.25vw, 15px);
+    line-height: 1.2;
+  }
+
+  .about-page .about-copy-card li::before {
+    top: 0.35em;
+    width: 8px;
+    height: 8px;
+    border-width: 2px;
+  }
+
+  .about-page .about-action-buttons {
+    margin-top: 10px;
+  }
+
+  .about-page .about-action-buttons button {
+    min-height: 40px;
+    font-size: clamp(11px, 1vw, 13px);
+  }
+
+  .about-page .about-nav-item img {
+    width: clamp(23px, 2.1vw, 32px);
+    height: clamp(23px, 2.1vw, 32px);
+  }
+
+  .about-page .about-nav-item span {
+    font-size: clamp(7px, 0.7vw, 9px);
+  }
+}

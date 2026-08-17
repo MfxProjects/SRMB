@@ -1,0 +1,217 @@
+/* Group of Companies uses a simple PDF-like table so every PDF detail stays easy to read. */
+.group-companies-panel {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(12px, 1.7vh, 22px);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(235, 194, 82, 0.16), transparent 30%),
+    linear-gradient(145deg, #05070a 0%, #111820 52%, #05070a 100%);
+}
+
+.group-companies-header .about-title-bar h1 {
+  font-size: clamp(31px, 2.35vw, 50px);
+}
+
+.group-companies-stage {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.32fr) minmax(0, 1fr);
+  gap: clamp(14px, 1.4vw, 26px);
+}
+
+.group-company-index,
+.group-pdf-sheet {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(233, 190, 78, 0.28);
+  border-radius: 18px;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.24);
+}
+
+.group-company-index {
+  display: grid;
+  grid-template-rows: auto;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 6px;
+  padding: clamp(12px, 1vw, 18px);
+  background: rgba(10, 14, 18, 0.9);
+}
+
+.group-index-heading {
+  display: grid;
+  gap: 4px;
+  padding: 6px 6px 10px;
+  border-bottom: 1px solid rgba(233, 190, 78, 0.24);
+}
+
+.group-index-heading span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(10px, 0.68vw, 13px);
+  font-weight: 1000;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.group-index-heading span {
+  color: #f0cc70;
+}
+
+.group-index-heading strong {
+  color: #ffffff;
+  font-size: clamp(16px, 1.05vw, 21px);
+}
+
+.group-index-button {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.82);
+  padding: 6px 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.group-index-button.active,
+.group-index-button:hover {
+  border-color: #e8bd4c;
+  background: linear-gradient(90deg, rgba(232, 189, 76, 0.28), rgba(255, 255, 255, 0.06));
+  color: #ffffff;
+}
+
+.group-index-button span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(232, 189, 76, 0.14);
+  color: #ffd875;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(11px, 0.74vw, 14px);
+  font-weight: 1000;
+}
+
+.group-index-button strong {
+  min-width: 0;
+  overflow: hidden;
+  color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(12px, 0.84vw, 16px);
+  font-weight: 900;
+  line-height: 1.14;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.group-pdf-sheet {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  background: #f6f1e2;
+  color: #111111;
+}
+
+.group-table-wrap {
+  min-height: 0;
+  overflow: auto;
+  padding: clamp(14px, 1.1vw, 22px);
+}
+
+.group-table-wrap::-webkit-scrollbar {
+  width: 8px;
+}
+
+.group-table-wrap::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(36, 36, 36, 0.28);
+}
+
+.group-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: #fffaf0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(13px, 0.82vw, 16px);
+  line-height: 1.35;
+}
+
+.group-info-table th,
+.group-info-table td {
+  border: 1px solid #b9a56e;
+  padding: clamp(8px, 0.75vw, 13px);
+  vertical-align: top;
+}
+
+.group-info-table th {
+  background: #d8b153;
+  color: #111111;
+  font-size: clamp(12px, 0.78vw, 15px);
+  font-weight: 1000;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.group-info-table th:nth-child(1),
+.group-info-table td:nth-child(1) {
+  width: 72px;
+  text-align: center;
+}
+
+.group-info-table th:nth-child(2),
+.group-info-table td:nth-child(2) {
+  width: 24%;
+  font-weight: 1000;
+}
+
+.group-info-table td:nth-child(3) {
+  color: #1d1d1d;
+  font-weight: 700;
+}
+
+.group-info-table p,
+.group-detail-list {
+  margin: 0;
+}
+
+.group-detail-list {
+  padding-left: 18px;
+}
+
+.group-detail-list li + li {
+  margin-top: 6px;
+}
+
+@media (max-height: 820px) and (min-width: 900px) {
+  .group-companies-stage {
+    grid-template-columns: minmax(238px, 0.3fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .group-company-index {
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .group-index-button {
+    grid-template-columns: 32px minmax(0, 1fr);
+    border-radius: 8px;
+    padding: 5px 8px;
+  }
+
+  .group-index-button span {
+    width: 27px;
+    height: 27px;
+  }
+
+  .group-info-table th,
+  .group-info-table td {
+    padding: 7px 9px;
+  }
+
+}

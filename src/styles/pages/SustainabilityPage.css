@@ -239,22 +239,24 @@
   user-select: none;
 }
 
-.certificate-stage {
+.sustainability-certificate-stage {
   grid-template-rows: minmax(0, 1fr);
 }
 
-.certificate-stage .sustainability-viewer {
+.sustainability-certificate-stage .sustainability-viewer {
   grid-row: 1;
 }
 
 .certificate-viewer {
   display: block;
   padding: 0;
+  background: #101419;
 }
 
 .sustainability-certificate-wrap {
   position: absolute;
   inset: clamp(12px, 1.2vh, 18px);
+  z-index: 1;
   min-width: 0;
   min-height: 0;
   width: auto;
@@ -267,13 +269,15 @@
 }
 
 .sustainability-certificate-wrap img {
+  position: relative;
+  z-index: 2;
   width: auto;
   max-width: 100%;
   height: auto;
   max-height: 100%;
   display: block;
   object-fit: contain;
-  background: transparent;
+  background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 22px 42px rgba(0, 0, 0, 0.32);
   pointer-events: none;
@@ -281,6 +285,7 @@
 
 .sustainability-certificate-controls {
   position: absolute;
+  z-index: 3;
   left: 50%;
   bottom: clamp(10px, 1.4vh, 18px);
   transform: translateX(-50%);

@@ -22,11 +22,11 @@
 
 .about-page .about-title-bar h1,
 .title-simple-page .about-title-bar h1 {
-  font-family: 'Palatino Linotype', Palatino, Constantia, Georgia, serif;
+  font-family: var(--page-title-font);
   font-size: clamp(36px, 2.55vw, 49px);
   letter-spacing: 1.5px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: var(--page-title-weight);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -75,6 +75,23 @@
 .about-page .photo-card,
 .about-page .about-copy-card {
   box-shadow: 0 18px 38px rgba(10, 18, 30, 0.14);
+}
+
+.about-video-card {
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(8px, 0.65vw, 12px);
+  background: #05070a;
+}
+
+.about-corporate-video {
+  width: 100%;
+  height: clamp(355px, 46vh, 455px);
+  display: block;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #000000;
 }
 
 .main-about-photo-button {
@@ -371,7 +388,8 @@
     min-height: clamp(104px, 8vh, 172px);
   }
 
-  .main-about-photo {
+  .main-about-photo,
+  .about-corporate-video {
     height: clamp(520px, 48vh, 920px);
   }
 
@@ -414,7 +432,8 @@
     justify-self: center;
   }
 
-  .main-about-photo {
+  .main-about-photo,
+  .about-corporate-video {
     height: clamp(520px, 46vh, 820px);
   }
 
@@ -429,7 +448,8 @@
     grid-template-columns: 1fr;
   }
 
-  .main-about-photo {
+  .main-about-photo,
+  .about-corporate-video {
     height: auto;
     aspect-ratio: 2.18;
   }
@@ -489,7 +509,8 @@
 
 @media (min-width: 1500px) and (min-height: 800px) {
 
-  .main-about-photo {
+  .main-about-photo,
+  .about-corporate-video {
     height: clamp(290px, 36vh, 360px);
   }
 }

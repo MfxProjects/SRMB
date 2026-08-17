@@ -504,20 +504,84 @@ button.game-choice-card:hover .game-choice-cta {
 }
 
 .bar-icon {
-  width: 44px;
-  height: 42px;
-  display: grid;
-  gap: 4px;
+  position: relative;
+  width: 58px;
+  height: 50px;
+  display: block;
+  filter: drop-shadow(0 9px 10px rgba(0, 0, 0, 0.32));
 }
 
 .bar-icon i {
   display: block;
-  height: 8px;
+  position: absolute;
+  left: 4px;
+  right: 3px;
+  height: 10px;
   border-radius: 999px;
   background:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0 5px, transparent 5px 10px),
-    linear-gradient(90deg, #8e9baa, #dadfe4 50%, #687480);
-  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.35);
+    repeating-linear-gradient(117deg, transparent 0 9px, rgba(42, 47, 52, 0.58) 9px 11px, rgba(255, 255, 255, 0.62) 11px 13px, transparent 13px 22px),
+    linear-gradient(90deg, #363a3e 0%, #aeb5bb 18%, #f7f9fa 42%, #8b9399 66%, #24282c 100%);
+  box-shadow:
+    inset 0 -4px 5px rgba(0, 0, 0, 0.38),
+    inset 0 3px 4px rgba(255, 255, 255, 0.72),
+    0 1px 0 rgba(255, 255, 255, 0.26);
+  transform: rotate(-34deg);
+}
+
+.bar-icon i:nth-child(1) {
+  top: 7px;
+  left: 0;
+  right: 10px;
+}
+
+.bar-icon i:nth-child(2) {
+  top: 19px;
+  left: 6px;
+  right: 1px;
+}
+
+.bar-icon i:nth-child(3) {
+  top: 31px;
+  left: 12px;
+  right: -5px;
+}
+
+.bar-icon i::after {
+  content: 'SRMB';
+  position: absolute;
+  left: 46%;
+  top: 50%;
+  color: rgba(29, 32, 35, 0.52);
+  font-size: 7px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.52);
+  transform: translate(-50%, -50%);
+}
+
+.bar-icon em {
+  position: absolute;
+  right: -9px;
+  bottom: -3px;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: rgba(242, 199, 103, 0.92);
+  color: #14100a;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 1000;
+  letter-spacing: 0.4px;
+}
+
+.bar-icon-generic i {
+  background:
+    repeating-linear-gradient(117deg, transparent 0 14px, rgba(28, 29, 31, 0.45) 14px 16px, rgba(255, 255, 255, 0.2) 16px 18px, transparent 18px 30px),
+    linear-gradient(90deg, #202328 0%, #6f767d 28%, #a0a3a5 46%, #6c5c4f 70%, #222327 100%);
+  filter: saturate(0.62) brightness(0.82);
+}
+
+.bar-icon-generic i::after {
+  content: '';
 }
 
 .quake-selector button {
@@ -1011,14 +1075,89 @@ button.game-choice-card:hover .game-choice-cta {
   position: absolute;
   top: 18px;
   bottom: 18px;
-  width: 11px;
+  width: 14px;
+  border-radius: 999px;
   background:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.22) 0 5px, transparent 5px 12px),
-    linear-gradient(90deg, #564837, #aa7b31 46%, #5f4324);
+    repeating-linear-gradient(152deg, transparent 0 12px, rgba(31, 35, 39, 0.48) 12px 14px, rgba(255, 255, 255, 0.42) 14px 16px, transparent 16px 28px),
+    linear-gradient(90deg, #32373c 0%, #a7afb6 20%, #f5f7f8 43%, #899197 68%, #262a2f 100%);
   box-shadow:
-    inset -2px 0 2px rgba(0, 0, 0, 0.28),
-    0 0 8px rgba(152, 111, 45, 0.2);
+    inset -3px 0 4px rgba(0, 0, 0, 0.34),
+    inset 2px 0 3px rgba(255, 255, 255, 0.45),
+    0 0 8px rgba(208, 218, 226, 0.2);
   z-index: 5;
+  overflow: hidden;
+}
+
+.rebar-column::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(150deg, transparent 0 20px, rgba(20, 24, 28, 0.5) 20px 23px, rgba(255, 255, 255, 0.58) 23px 25px, transparent 25px 42px);
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+}
+
+.rebar-column::after {
+  content: 'SRMB 500D';
+  position: absolute;
+  left: 50%;
+  top: 7%;
+  bottom: 7%;
+  display: grid;
+  place-items: center;
+  color: rgba(24, 29, 34, 0.58);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(11px, 0.86vw, 15px);
+  font-weight: 1000;
+  letter-spacing: 4px;
+  line-height: 1;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.58),
+    0 -1px 0 rgba(0, 0, 0, 0.22);
+  transform: translateX(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.steel-survivor-panel.selected-generic .rebar-column {
+  width: 11px;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(152deg, transparent 0 18px, rgba(31, 25, 20, 0.45) 18px 20px, rgba(255, 255, 255, 0.14) 20px 22px, transparent 22px 36px),
+    linear-gradient(90deg, #24262a 0%, #72777b 25%, #a8a9aa 46%, #6d5542 70%, #24252a 100%);
+  filter: saturate(0.58) brightness(0.84);
+  box-shadow:
+    inset -3px 0 4px rgba(0, 0, 0, 0.42),
+    0 0 8px rgba(122, 83, 45, 0.16);
+}
+
+.steel-survivor-panel.selected-generic .rebar-column::after {
+  content: '';
+}
+
+.steel-survivor-panel.selected-srmb .rebar-column {
+  width: 18px;
+  background:
+    repeating-linear-gradient(151deg, transparent 0 15px, rgba(26, 31, 36, 0.52) 15px 18px, rgba(255, 255, 255, 0.68) 18px 20px, transparent 20px 34px),
+    linear-gradient(90deg, #20262b 0%, #9eaab2 16%, #f9fbfc 39%, #aeb7bd 54%, #5f6b72 73%, #171c21 100%);
+  box-shadow:
+    inset -5px 0 7px rgba(0, 0, 0, 0.46),
+    inset 4px 0 6px rgba(255, 255, 255, 0.62),
+    0 0 16px rgba(207, 224, 235, 0.28);
+}
+
+.steel-survivor-panel.selected-srmb .rebar-column.left {
+  left: 17%;
+}
+
+.steel-survivor-panel.selected-srmb .rebar-column.middle {
+  left: 50%;
+}
+
+.steel-survivor-panel.selected-srmb .rebar-column.right {
+  right: 17%;
 }
 
 .rebar-column.left {
@@ -4352,6 +4491,34 @@ button.game-choice-card:hover .game-choice-cta {
   overflow: hidden;
 }
 
+.original-srmb-bar-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.04) saturate(1.05) brightness(0.96);
+  pointer-events: none;
+}
+
+.genuine-sample .steel-specimen {
+  background:
+    linear-gradient(180deg, rgba(6, 13, 19, 0.08), rgba(6, 13, 19, 0.26)),
+    #142332;
+}
+
+.genuine-sample .steel-specimen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(4, 10, 16, 0.1), transparent 22%, transparent 70%, rgba(4, 10, 16, 0.32)),
+    linear-gradient(180deg, transparent 58%, rgba(4, 8, 12, 0.42));
+  pointer-events: none;
+}
+
 .steel-specimen i {
   position: absolute;
   left: 7%;
@@ -4359,9 +4526,25 @@ button.game-choice-card:hover .game-choice-cta {
   height: 27px;
   border-radius: 999px;
   background:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0 8px, transparent 8px 15px),
-    linear-gradient(90deg, #394047 0%, #b8c0c5 24%, #f0f2f4 42%, #995f2c 69%, #30353b 100%);
-  box-shadow: inset 0 -5px 7px rgba(0, 0, 0, 0.32), inset 0 4px 6px rgba(255, 255, 255, 0.18), 0 18px 22px rgba(0, 0, 0, 0.28);
+    repeating-linear-gradient(116deg, transparent 0 12px, rgba(32, 36, 40, 0.56) 12px 15px, rgba(255, 255, 255, 0.58) 15px 18px, transparent 18px 31px),
+    linear-gradient(90deg, #2d3236 0%, #aab3ba 20%, #f8fafb 42%, #8a9399 68%, #252a2e 100%);
+  box-shadow:
+    inset 0 -7px 8px rgba(0, 0, 0, 0.36),
+    inset 0 5px 7px rgba(255, 255, 255, 0.44),
+    0 18px 22px rgba(0, 0, 0, 0.28);
+}
+
+.steel-specimen i::after {
+  content: 'SRMB';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: rgba(30, 34, 38, 0.55);
+  font-size: clamp(12px, 0.95vw, 17px);
+  font-weight: 1000;
+  letter-spacing: 4px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.58);
+  transform: translate(-50%, -50%);
 }
 
 .steel-specimen i:nth-child(1) {
@@ -4378,8 +4561,13 @@ button.game-choice-card:hover .game-choice-cta {
 
 .fake-sample .steel-specimen i {
   background:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 13px, transparent 13px 30px),
-    linear-gradient(90deg, #262a30 0%, #878f95 28%, #c7c8c8 44%, #774327 72%, #24262b 100%);
+    repeating-linear-gradient(116deg, transparent 0 20px, rgba(34, 28, 24, 0.5) 20px 23px, rgba(255, 255, 255, 0.16) 23px 25px, transparent 25px 42px),
+    linear-gradient(90deg, #22252a 0%, #737a80 28%, #b2b4b6 45%, #725039 70%, #222328 100%);
+  filter: saturate(0.62) brightness(0.86);
+}
+
+.fake-sample .steel-specimen i::after {
+  content: '';
 }
 
 .bar-stamp,
@@ -5104,5 +5292,26 @@ button.game-choice-card:hover .game-choice-cta {
   .result-card,
   .learning-card {
     padding: 12px;
+  }
+}
+
+@media (min-width: 1500px) and (min-height: 800px) {
+  .game-screen {
+    height: 100vh;
+    min-height: 100vh;
+    padding: 6px;
+    overflow: hidden !important;
+    place-items: start center;
+  }
+
+  .game-panel {
+    width: calc(100vw - 12px) !important;
+    height: calc(100vh - 12px) !important;
+    max-height: calc(100vh - 12px);
+    min-height: 0 !important;
+    grid-template-rows: clamp(70px, 8.8vh, 104px) minmax(0, 1fr) clamp(88px, 10.8vh, 122px);
+    gap: clamp(8px, 1.25vh, 16px);
+    padding: clamp(10px, 1.15vh, 16px) clamp(18px, 1.5vw, 32px);
+    overflow: hidden !important;
   }
 }

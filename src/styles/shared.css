@@ -23,6 +23,8 @@
   --muted-text: #d8d1c5;
   --button-text: #2a1a0d;
   --logo-bg: linear-gradient(90deg, #bd8851, #d6ad72);
+  --page-title-font: Arial, Helvetica, sans-serif;
+  --page-title-weight: 700;
   --accent-filter: brightness(0) saturate(100%) invert(77%) sepia(62%) saturate(607%) hue-rotate(355deg) brightness(98%) contrast(91%);
   --motion-fast: 140ms;
   --motion-base: 220ms;
@@ -32,21 +34,27 @@
 }
 
 :root[data-theme='ivory'] {
-  --panel: #f6efe2;
-  --gold: #c99554;
-  --soft-gold: #e9c76d;
-  --screen-bg: #e7ddcd;
-  --panel-shadow: #b8935e;
-  --title-bg: linear-gradient(90deg, #fff7eb 0%, #f2dfc2 55%, #fff7eb 100%);
-  --inner-panel: #fff8ee;
-  --deep-panel: #f4e4cc;
-  --nav-bg: linear-gradient(180deg, #fff8ed, #ead8be);
-  --body-text: #2d2318;
-  --nav-text: #2f281e;
-  --muted-text: #5c5145;
-  --button-text: #2a1a0d;
-  --logo-bg: linear-gradient(90deg, #d5a66a, #eac68c);
-  --accent-filter: brightness(0) saturate(100%) invert(45%) sepia(60%) saturate(479%) hue-rotate(351deg) brightness(92%) contrast(91%);
+  --panel: #07131d;
+  --page: #050b12;
+  --gold: #f1c75d;
+  --soft-gold: #ffe08a;
+  --caption: rgba(83, 170, 255, 0.74);
+  --caption-deep: rgba(14, 118, 188, 0.72);
+  --screen-bg: #02060b;
+  --panel-shadow: rgba(0, 0, 0, 0.72);
+  --title-bg: linear-gradient(90deg, #02060b 0%, #0b1825 50%, #05070b 100%);
+  --inner-panel: #0d1822;
+  --deep-panel: #03080e;
+  --nav-bg: linear-gradient(180deg, #111923, #05080d);
+  --body-text: #fff8e5;
+  --nav-text: #f8d86c;
+  --muted-text: #c7d5df;
+  --button-text: #07131d;
+  --logo-bg: linear-gradient(90deg, #0d7f67, #0f74c8 48%, #b73a35);
+  --accent-filter: brightness(0) saturate(100%) invert(79%) sepia(80%) saturate(467%) hue-rotate(354deg) brightness(102%) contrast(94%);
+  color: #fff8e5;
+  background: #02060b;
+  color-scheme: dark;
 }
 
 :root[data-theme='steel'] {
@@ -83,6 +91,30 @@
   --button-text: #130d02;
   --logo-bg: linear-gradient(90deg, #9c7133, #d8aa62);
   --accent-filter: brightness(0) saturate(100%) invert(78%) sepia(56%) saturate(560%) hue-rotate(356deg) brightness(101%) contrast(88%);
+}
+
+:root[data-theme='golden-light'] {
+  --panel: #fff7e6;
+  --page: #f4e4c5;
+  --gold: #ad700b;
+  --soft-gold: #815006;
+  --caption: rgba(132, 83, 7, 0.8);
+  --caption-deep: rgba(91, 55, 3, 0.84);
+  --screen-bg: #ead9b8;
+  --panel-shadow: rgba(151, 98, 14, 0.42);
+  --title-bg: linear-gradient(90deg, #fffaf0 0%, #edcf91 52%, #fff4dc 100%);
+  --inner-panel: #fffaf1;
+  --deep-panel: #ead09c;
+  --nav-bg: linear-gradient(180deg, #fff8e8, #e9cb8d);
+  --body-text: #2e2619;
+  --nav-text: #17130d;
+  --muted-text: #62533d;
+  --button-text: #fffaf0;
+  --logo-bg: linear-gradient(90deg, #e3b43f, #aa6d09);
+  --accent-filter: brightness(0) saturate(100%) invert(43%) sepia(77%) saturate(887%) hue-rotate(4deg) brightness(91%) contrast(92%);
+  color: #2e2619;
+  background: #f2e8d5;
+  color-scheme: light;
 }
 
 :root[data-theme='mono'] {
@@ -1082,9 +1114,10 @@ button {
 .about-title-bar h1 {
   margin: 0;
   color: var(--body-text);
+  font-family: var(--page-title-font);
   font-size: clamp(44px, 3.28vw, 63px);
   line-height: 1;
-  font-weight: 800;
+  font-weight: var(--page-title-weight);
   letter-spacing: 8px;
 }
 

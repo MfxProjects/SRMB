@@ -337,7 +337,7 @@
   grid-template-rows: minmax(0, 1fr) auto;
   gap: clamp(8px, 1.1vh, 14px);
   justify-items: center;
-  align-items: center;
+  align-items: start;
 }
 
 .product-gallery {
@@ -345,7 +345,9 @@
   --product-card-gap: clamp(52px, 5.2vw, 96px);
   min-height: 0;
   height: 100%;
+  align-self: start;
   justify-items: center;
+  overflow: visible;
 }
 
 .product-gallery-track {
@@ -357,7 +359,7 @@
 .product-gallery-card {
   width: var(--product-card-width);
   max-width: min(100%, 520px);
-  aspect-ratio: 612 / 756;
+  aspect-ratio: 1347 / 1664;
   top: 50%;
   border-radius: 8px;
   background: #ffffff;
@@ -368,8 +370,52 @@
 .product-gallery-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   background: #ffffff;
+}
+
+.product-gallery.realring-gallery,
+.product-gallery.realnail-gallery,
+.product-gallery.realwire-gallery {
+  --product-card-width: min(100%, 1120px);
+}
+
+.product-gallery.realring-gallery .product-gallery-track,
+.product-gallery.realnail-gallery .product-gallery-track,
+.product-gallery.realwire-gallery .product-gallery-track {
+  width: 100%;
+}
+
+.product-gallery-card.realring-crop {
+  max-width: min(100%, 1120px);
+  aspect-ratio: 1347 / 615;
+}
+
+.product-gallery-card.realring-crop img {
+  height: auto;
+  object-fit: initial;
+}
+
+.product-gallery-card.realnail-crop {
+  max-width: min(100%, 1120px);
+  aspect-ratio: 1347 / 420;
+}
+
+.product-gallery-card.realnail-crop img {
+  height: auto;
+  object-fit: initial;
+  transform: translateY(-36.06%);
+}
+
+.product-gallery-card.realwire-crop {
+  max-width: min(100%, 1120px);
+  aspect-ratio: 1347 / 483;
+}
+
+.product-gallery-card.realwire-crop img {
+  height: auto;
+  object-fit: initial;
+  transform: translateY(-70.97%);
 }
 
 .product-gallery-card.offset-0 {

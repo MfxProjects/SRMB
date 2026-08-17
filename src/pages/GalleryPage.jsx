@@ -1,20 +1,45 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/pages/GalleryPage.css';
-import { flushSync } from 'react-dom';
-import { ArrowLeft, Building2, Check, Clapperboard, ExternalLink, Factory, Gamepad2, Hammer, Landmark, Map, Mic2, Newspaper, Play, RotateCcw, ShieldCheck, Sun, Trophy, X, Zap } from 'lucide-react';
-import { sections, cards, formatHomeDateTime, formatHomeDate, formatDigitalTime, formatLongDate, formatMonthTitle, toCalendarKey, calendarEvents, getCalendarMonthData, formatMediaTime, infrastructureVideo, corporateVideo, brandAmbassadorImage, corporateOfficeMapsUrl, corporateOfficeEmbedUrl, themes, themeIds, defaultTheme, aboutPhotos, boardDirectorSlides, navItems, contactDetails, galleryVideos, testimonyAssetPath, testimonyPosterPath, testimonyVideos, testimonyVideosPerSlide, productBrochurePage, productBrochurePages, productSlides, realnailSlides, projectSlides, certificateSlides, awardSlides, mediaAssetPath, mediaPosterPath, mediaCornerSections, sectionDetails, feedbackRatings, feedbackMoodOptions } from '../data/appData.jsx';
-import { GoogleMapsIcon, PrimaryNav } from '../components/shared.jsx';
+import '../styles/kiosk-overrides.css';
+import { Play, X } from 'lucide-react';
+import { navItems, galleryVideos } from '../data/appData.jsx';
 
-// Displays campaign videos and opens the selected item in a full-screen player.
+// Displays campaign videos as autoplaying muted previews and opens the selected item in a full-screen player.
 export default function GalleryPage({ onNavigate }) {
   const [activeVideo, setActiveVideo] = useState(null);
+  const lightboxRef = useRef(null);
+
+  useEffect(() => {
+    if (activeVideo && lightboxRef.current?.requestFullscreen) {
+      lightboxRef.current.requestFullscreen().catch(() => {});
+    }
+  }, [activeVideo]);
+
+  useEffect(() => {
+    function syncWithFullscreenExit() {
+      if (!document.fullscreenElement) {
+        setActiveVideo(null);
+      }
+    }
+
+    document.addEventListener('fullscreenchange', syncWithFullscreenExit);
+    return () => document.removeEventListener('fullscreenchange', syncWithFullscreenExit);
+  }, []);
+
+  function closeLightbox() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    }
+
+    setActiveVideo(null);
+  }
 
   return (
     <main className="screen about-screen gallery-screen title-simple-page">
       <section className="about-panel gallery-panel">
         <header className="about-header">
           <div className="about-title-bar">
-            <h1>MEDIA GALLERY</h1>
+            <h1>GALLERY</h1>
           </div>
           <div className="about-logo-box">
             <img src="/assets/applogo/download.jpg" alt="SRMB" />
@@ -22,19 +47,22 @@ export default function GalleryPage({ onNavigate }) {
         </header>
 
         <section className="gallery-grid" aria-label="Media gallery videos">
-          {galleryVideos.map((video, index) => (
+          {galleryVideos.map((video) => (
             <button
-              className="gallery-video-tile"
-              key={video}
+              className="gallery-media-tile"
+              key={video.src}
               type="button"
               onClick={() => setActiveVideo(video)}
-              aria-label={`Open gallery video ${index + 1}`}
+              aria-label={`Play ${video.title}`}
             >
-              <img
-                src={`/assets/gallery/posters/gallery-${index + 1}.webp`}
-                alt=""
-                loading="lazy"
-                decoding="async"
+              <video
+                src={encodeURI(video.src)}
+                poster={video.poster || undefined}
+                muted
+                autoPlay
+                loop
+                playsInline
+                preload="metadata"
                 aria-hidden="true"
               />
               <span className="gallery-play-dot" aria-hidden="true">
@@ -64,26 +92,29 @@ export default function GalleryPage({ onNavigate }) {
             role="dialog"
             aria-modal="true"
             aria-label="Gallery video viewer"
-            onClick={() => setActiveVideo(null)}
+            ref={lightboxRef}
+            onClick={closeLightbox}
           >
             <button
               className="gallery-lightbox-close"
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
-                setActiveVideo(null);
+                closeLightbox();
               }}
               aria-label="Close gallery video"
             >
-              &times;
+              <X strokeWidth={2} />
             </button>
-            <video
-              src={activeVideo}
-              controls
-              autoPlay
-              playsInline
-              onClick={(event) => event.stopPropagation()}
-            />
+            <div className="gallery-lightbox-frame" onClick={(event) => event.stopPropagation()}>
+              <video
+                src={encodeURI(activeVideo.src)}
+                controls
+                autoPlay
+                playsInline
+              />
+              <span className="gallery-lightbox-title">{activeVideo.title}</span>
+            </div>
           </div>
         )}
       </section>

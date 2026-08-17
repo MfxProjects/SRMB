@@ -1,4 +1,4 @@
-const { app, BrowserWindow, protocol } = require('electron');
+const { app, BrowserWindow, ipcMain, protocol } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const { Readable } = require('stream');
@@ -32,7 +32,14 @@ const mimeTypes = {
   '.mp4': 'video/mp4',
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
+  '.ppt': 'application/vnd.ms-powerpoint',
+  '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
 };
+
+ipcMain.handle('srmb:exit-app', () => {
+  app.quit();
+  return true;
+});
 
 function resolveAppPath(url) {
   const parsedUrl = new URL(url);

@@ -75,6 +75,8 @@ export function FeatureCard({ card, onOpen, onPrefetch }) {
           <span>{card.label}</span>
         </span>
       )}
+      <span className="feature-card-label" aria-hidden="true">{card.label}</span>
+      <span className="feature-card-arrow" aria-hidden="true">›</span>
     </button>
   );
 }
@@ -280,6 +282,10 @@ export function pageFromPath(pathname) {
 
   if (normalizedPath === 'feedback') {
     return 'contact';
+  }
+
+  if (normalizedPath === 'notes') {
+    return 'notes';
   }
 
   if (normalizedPath === 'mission-vision' || normalizedPath === 'board-directors') {

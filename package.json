@@ -1,17 +1,19 @@
 {
   "name": "srmb-desktop",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "SRMB desktop presentation app",
   "main": "electron/main.cjs",
   "author": "SRMB",
   "private": true,
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build && cmd /c \"robocopy assets dist\\assets /E /XF *.__backup__.mp4 *.__compressed__.mp4 /R:1 /W:1 & if %ERRORLEVEL% LEQ 1 exit /b 0 else exit /b %ERRORLEVEL%\"",
+    "prepare:icon": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/create-windows-icon.ps1",
+    "prepare:pfd": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/export-pfd-slides.ps1",
+    "build": "npm run prepare:pfd && vite build && cmd /c \"robocopy assets dist\\assets /E /XF *.__backup__.mp4 *.__compressed__.mp4 /R:1 /W:1 & if %ERRORLEVEL% LEQ 1 exit /b 0 else exit /b %ERRORLEVEL%\" && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prune-dist-assets.ps1",
     "preview": "vite preview --host 0.0.0.0",
     "desktop": "npm run build && electron .",
     "desktop:kiosk": "set SRMB_KIOSK=1 && npm run build && electron .",
-    "dist:win": "npm run build && electron-builder --win nsis"
+    "dist:win": "npm run prepare:icon && npm run build && electron-builder --win nsis --x64"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
@@ -23,13 +25,15 @@
   "devDependencies": {
     "electron": "^41.3.0",
     "electron-builder": "^26.8.1",
-    "playwright-core": "^1.59.1"
+    "playwright-core": "^1.59.1",
+    "rcedit": "^5.0.2"
   },
   "build": {
     "appId": "com.srmb.desktop",
     "productName": "SRMB",
+    "afterPack": "scripts/after-pack.cjs",
     "directories": {
-      "output": "C:\\\\Users\\\\TAAZA14\\\\Desktop\\\\SRMB-Installer"
+      "output": "release-windows"
     },
     "files": [
       "dist/**/*",
@@ -37,6 +41,7 @@
       "package.json"
     ],
     "win": {
+      "icon": "build/icon.ico",
       "signAndEditExecutable": false,
       "target": [
         {
@@ -48,6 +53,10 @@
       ]
     },
     "nsis": {
+      "artifactName": "SRMB-Setup-${version}-${arch}.${ext}",
+      "include": "build/installer.nsh",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,

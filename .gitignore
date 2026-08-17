@@ -2,9 +2,14 @@ node_modules/
 dist/
 release/
 desktop-release*/
+release-windows/
+release-installer*/
 .npm-cache/
 .tmp-browser/
+.cache/
+.claude/
 tmp/
+build/
 
 *.log
 .tmp-*

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/pages/SustainabilityPage.css';
+import '../styles/kiosk-overrides.css';
 import { BadgeCheck, BookOpen, ChevronLeft, ChevronRight, FileText, Leaf } from 'lucide-react';
 import { PrimaryNav } from '../components/shared.jsx';
 
@@ -155,7 +156,7 @@ export default function SustainabilityPage({ onNavigate }) {
             })}
           </nav>
 
-          <section className={`sustainability-document-stage ${isReport ? 'report-stage' : 'certificate-stage'}`} aria-label={`${activeTopic.title} document preview`}>
+          <section className={`sustainability-document-stage ${isReport ? 'report-stage' : 'sustainability-certificate-stage'}`} aria-label={`${activeTopic.title} document preview`}>
             {activeTopic.documents.length > 1 && (
               <div className="sustainability-report-tabs" aria-label="ESG report years">
                 {activeTopic.documents.map((document, index) => (
