@@ -27,6 +27,12 @@ function Write-SlideManifest {
 }
 
 if (-not (Test-Path -LiteralPath $deckPath)) {
+  if ($existingSlides.Count -gt 0) {
+    Write-Host "PFD source deck was not found, using existing rendered slides."
+    Write-SlideManifest
+    exit 0
+  }
+
   throw "PFD source deck was not found: $deckPath"
 }
 

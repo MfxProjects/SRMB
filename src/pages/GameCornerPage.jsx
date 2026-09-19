@@ -306,7 +306,7 @@ export default function GameCornerPage({ onNavigate }) {
             <h1>GAME CORNER</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -538,7 +538,7 @@ function ProductMatchGame({ onBack, onNavigate }) {
             <h1>RIGHT STEEL RIGHT JOB</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -686,7 +686,7 @@ function SteelSurvivorGame({ onBack, onNavigate }) {
             <h1>STEEL SURVIVOR</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -1032,7 +1032,7 @@ function SteelMillRushGame({ onBack, onNavigate }) {
             <h1>STEEL MILL RUSH</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -1230,7 +1230,7 @@ function BuildKolkataGame({ onBack, onNavigate }) {
             <h1>BUILD KOLKATA</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -1474,7 +1474,7 @@ function SpotFakeGame({ onBack, onNavigate }) {
             <h1>SPOT THE FAKE</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 

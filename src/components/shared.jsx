@@ -220,7 +220,7 @@ export function WelcomeModal({ onClose }) {
         </button>
 
         <div className="welcome-copy">
-          <img className="welcome-logo" src="/assets/applogo/download.jpg" alt="SRMB" />
+          <img className="welcome-logo" src="/assets/applogo/download.png" alt="SRMB" />
           <span className="welcome-kicker">Welcome to SRMB</span>
           <h2>Building stronger futures with trusted steel</h2>
           <p>

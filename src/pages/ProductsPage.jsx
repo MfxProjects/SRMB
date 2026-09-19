@@ -64,7 +64,7 @@ export default function ProductsPage({ onNavigate }) {
             <h1>PRODUCTS</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 

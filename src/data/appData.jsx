@@ -114,10 +114,26 @@ export function formatMediaTime(value) {
 
 export const infrastructureVideo = '/assets/gallery/Our_esteemed_director_Mr._Ashish_Beriwala_made_a_mark_at_Visionaries_of_Viksit_Bharat_SRMB_1080P.mp4';
 export const corporateVideo = '/assets/corporate av/srmb-corporate-av-compressed.mp4';
-export const newTvcVideo = '/assets/Media%20Corner/New%20TVC/FINAL%20LAUNCH%20AV%20SRMB%20TMT.mp4';
+export const newTvcVideo = '/assets/gallery/FINAL LAUNCH AV SRMB TMT.mp4';
 export const brandAmbassadorImage = '/assets/brand%20ambasder/brand-ambassador-hero.jpg';
-export const corporateOfficeMapsUrl = 'https://www.google.com/maps/place/SRMB+House+(Newtown+Corporate+Office)/@22.581785,88.480767,17z/data=!3m1!4b1!4m6!3m5!1s0x3a020bd0368c8fd7:0xd91766f14522e2ad!8m2!3d22.581785!4d88.480767!16s%2Fg%2F11krywvtlt?entry=ttu&g_ep=EgoyMDI2MDQyNy4wIKXMDSoASAFQAw%3D%3D';
-export const corporateOfficeEmbedUrl = 'https://www.google.com/maps?q=SRMB%20House%20Newtown%20Corporate%20Office%2022.581785%2C88.480767&z=17&output=embed';
+export const corporateOfficeMapsUrl = 'https://maps.app.goo.gl/3769yQR3LfPn6jwc6';
+export const corporateOfficeEmbedUrl = 'https://www.google.com/maps?q=SRMB+House+(Newtown+Corporate+Office)&output=embed';
+export const corporateOfficeAddress = 'HFJJ+H76, DH Block (Newtown), Action Area I, Newtown, Chakpachuria, West Bengal 700135';
+
+export const manufacturingPlantMapLinks = [
+  {
+    name: 'Panagarh',
+    mapsUrl: 'https://maps.app.goo.gl/in3C98nkVy5fuwwa8',
+    embedUrl: 'https://www.google.com/maps?q=23.453992,87.468141&z=16&output=embed',
+    address: 'Panagarh Industrial Area, West Bengal',
+  },
+  {
+    name: 'Barjora',
+    mapsUrl: 'https://maps.app.goo.gl/ihPT1L4qZWCxijaX6',
+    embedUrl: 'https://www.google.com/maps?q=23.4288654,87.2548676&z=16&output=embed',
+    address: 'Barjora Industrial Growth Centre, West Bengal',
+  },
+];
 
 // Themes map user-facing labels to the CSS variable sets in shared.css.
 export const themes = [
@@ -149,7 +165,7 @@ export const boardDirectorSlides = [
     role: 'Chairman',
     title: 'Message from Shri Brij Mohan Beriwala',
     image: '/assets/Boards%20of%20director%20corner/Mohan%20Ji-optimized.webp',
-    imageClassName: 'director-photo-mohan',
+    showMessage: true,
     message: [
       'Dear Stakeholders,',
       'Over the past seven decades, SRMB Srijan Private Limited has grown from a modest beginning into a trusted name in the Indian steel industry. This journey has been guided by a clear vision, strong values, and an unwavering commitment to quality, innovation, and responsibility. Our growth reflects not only the strength of our manufacturing capabilities but also the trust placed in us by our customers, stakeholders, and partners across the country. From supplying steel for essential infrastructure to contributing to projects of national importance, we take pride in being part of India\'s development story.',
@@ -161,10 +177,25 @@ export const boardDirectorSlides = [
     ],
   },
   {
+    name: 'Nikunj Beriwala',
+    role: 'Director',
+    title: 'Message from Shri Nikunj Beriwala',
+    image: '/assets/Boards%20of%20director%20corner/Nikunj%20Beriwala%20Banner.jpeg',
+    message: [
+      'Dear Stakeholders,',
+      'At SRMB Srijan Private Limited, our journey has always been guided by a strong commitment to quality, responsibility, and continuous improvement. As we move forward in an increasingly quality-conscious and sustainability-driven industrial environment, we remain focused on strengthening our manufacturing practices, ensuring consistent product performance, and maintaining the highest standards of governance across all operations. The trust placed in us by our stakeholders has been the driving force behind our efforts to build a manufacturing system that is reliable, transparent, and future-ready.',
+      'Sustainable manufacturing is one of the core pillars of our organizational philosophy. We continuously strive to optimize resource utilization, improve energy efficiency, and reduce environmental impact through the adoption of modern technologies and responsible production processes. Our focus is not only on meeting current requirements but also on ensuring that our manufacturing practices remain aligned with evolving environmental standards and national priorities for green and responsible steel production.',
+      'Product quality remains the foundation of our credibility. Every stage of our production process, from raw material selection to final dispatch, is governed by strict quality control procedures designed to ensure uniformity, strength, and reliability of our steel products. Our manufacturing facilities are supported by an in-house laboratory accredited to ISO/IEC 17025 under NABL, which enables precise chemical and mechanical testing using calibrated and validated equipment. This accreditation ensures that our test results are accurate, traceable, and in full compliance with applicable Indian Standards and project-specific requirements.',
+      'To maintain consistency in performance, SRMB operates under an Integrated Management System certified to ISO 9001 for Quality Management, ISO 14001 for Environmental Management, and ISO 45001 for Occupational Health & Safety. These systems provide a structured framework for process control, risk management, environmental protection, and workplace safety. Regular internal audits, external assessments, and continual improvement initiatives help us maintain discipline in operations and reinforce confidence among our customers and institutional stakeholders.',
+      'We believe that long-term growth can only be achieved through responsible manufacturing, dependable quality, and transparent systems. On behalf of the management, I extend my sincere gratitude to all our stakeholders - customers, partners, consultants, employees, and well-wishers - for their continued support and trust. We remain committed to delivering products that meet the highest standards of performance while contributing to a safer, more sustainable, and stronger infrastructure for the nation.',
+      '- Nikunj Beriwala',
+    ],
+  },
+  {
     name: 'Ashish Beriwala',
     role: 'Director',
     title: 'Message from Shri Ashish Beriwala',
-    image: '/assets/Boards%20of%20director%20corner/Ashish%20Ji%20Pic_page-0001-optimized.webp',
+    image: '/assets/Boards%20of%20director%20corner/Ashish%20Beriwala%20Banner.jpeg',
     message: [
       'Dear Stakeholders,',
       'Over the years, SRMB Srijan Private Limited has witnessed steady and consistent growth driven by the collective efforts of our employees, channel partners, customers, and institutional associates. From a strong manufacturing foundation, we have expanded our presence across diverse markets through a well-structured marketing network, a dedicated channel partner ecosystem, and a growing institutional business segment. Today, our products are trusted in major infrastructure, industrial, and construction projects across the country, reflecting the confidence that stakeholders have placed in our quality, reliability, and service commitment.',
@@ -179,7 +210,7 @@ export const boardDirectorSlides = [
     name: 'Navin Bhuwalka',
     role: 'Director',
     title: 'Message from Shri Navin Bhuwalka',
-    image: '/assets/Boards%20of%20director%20corner/Navin%20ji-optimized.webp',
+    image: '/assets/Boards%20of%20director%20corner/Navin%20Bhuwalka%20Banner.jpeg',
     message: [
       'Dear Stakeholders,',
       'Over the years, SRMB Srijan Private Limited has achieved steady and purposeful growth, driven by our commitment to quality, strong market presence, and the confidence reposed in us by our stakeholders. What began as a modest operation has evolved into a widely recognized steel manufacturer with a strong footprint across retail, institutional, and infrastructure sectors. Our progress reflects the collective efforts of our marketing teams, institutional sales division, channel partners, and technical personnel who have consistently worked towards expanding our reach while maintaining the highest standards of product reliability.',
@@ -191,19 +222,15 @@ export const boardDirectorSlides = [
     ],
   },
   {
-    name: 'Nikunj Beriwala',
+    name: 'Ashok Kumar Agarwal',
     role: 'Director',
-    title: 'Message from Shri Nikunj Beriwala',
-    image: '/assets/Boards%20of%20director%20corner/Nikunj%20Ji.png',
-    imageClassName: 'director-photo-nikunj',
+    title: 'Message from Shri Ashok Kumar Agarwal',
+    image: '/assets/Boards%20of%20director%20corner/Ashok%20Kumar%20Agarwal%20Banner.png',
     message: [
-      'Dear Stakeholders,',
-      'At SRMB Srijan Private Limited, our journey has always been guided by a strong commitment to quality, responsibility, and continuous improvement. As we move forward in an increasingly quality-conscious and sustainability-driven industrial environment, we remain focused on strengthening our manufacturing practices, ensuring consistent product performance, and maintaining the highest standards of governance across all operations. The trust placed in us by our stakeholders has been the driving force behind our efforts to build a manufacturing system that is reliable, transparent, and future-ready.',
-      'Sustainable manufacturing is one of the core pillars of our organizational philosophy. We continuously strive to optimize resource utilization, improve energy efficiency, and reduce environmental impact through the adoption of modern technologies and responsible production processes. Our focus is not only on meeting current requirements but also on ensuring that our manufacturing practices remain aligned with evolving environmental standards and national priorities for green and responsible steel production.',
-      'Product quality remains the foundation of our credibility. Every stage of our production process, from raw material selection to final dispatch, is governed by strict quality control procedures designed to ensure uniformity, strength, and reliability of our steel products. Our manufacturing facilities are supported by an in-house laboratory accredited to ISO/IEC 17025 under NABL, which enables precise chemical and mechanical testing using calibrated and validated equipment. This accreditation ensures that our test results are accurate, traceable, and in full compliance with applicable Indian Standards and project-specific requirements.',
-      'To maintain consistency in performance, SRMB operates under an Integrated Management System certified to ISO 9001 for Quality Management, ISO 14001 for Environmental Management, and ISO 45001 for Occupational Health & Safety. These systems provide a structured framework for process control, risk management, environmental protection, and workplace safety. Regular internal audits, external assessments, and continual improvement initiatives help us maintain discipline in operations and reinforce confidence among our customers and institutional stakeholders.',
-      'We believe that long-term growth can only be achieved through responsible manufacturing, dependable quality, and transparent systems. On behalf of the management, I extend my sincere gratitude to all our stakeholders - customers, partners, consultants, employees, and well-wishers - for their continued support and trust. We remain committed to delivering products that meet the highest standards of performance while contributing to a safer, more sustainable, and stronger infrastructure for the nation.',
-      '- Nikunj Beriwala',
+      'Shri Ashok Kumar Agarwal is a highly accomplished Director and Chartered Accountant of SRMB Group, a leading company in India dealing with steel and allied construction products, retailing, and software, with a turnover of ₹3000 Cr and an A+ rated steel manufacturing group. With over 35 years of experience in the steel industry and entrepreneurial initiatives, he has played a pivotal role in delivering the company\'s performance through his strong financial acumen, strategic leadership, and operational excellence.',
+      'With extensive experience in corporate governance, financial planning, risk management, and compliance, Shri Agarwal has brought a balanced perspective to both executive decision-making and fiscal stewardship. Known for driving business growth through data-driven strategies, he has excelled in aligning financial insights with long-term corporate objectives.',
+      'Shri Agarwal\'s leadership style has promoted transparency, accountability, and sustainable value creation for the SRMB Group across the industry.',
+      '- Ashok Kumar Agarwal',
     ],
   },
 ];
@@ -260,18 +287,22 @@ export const galleryVideos = [
   },
   {
     title: 'SRMB Kai Po Che 35Sec Hindi',
-    src: mediaAssetPath('New TVC', 'SRMB KAI PO CHE 35Sec_HINDI_HD.mp4'),
+    src: '/assets/gallery/SRMB KAI PO CHE 35Sec_HINDI_HD.mp4',
     poster: mediaPosterPath('kai-po-che.png'),
   },
   {
     title: 'SRMB BTS',
-    src: mediaAssetPath('New TVC', 'MASTER_SRMB_BTS_190325 (1).mp4'),
+    src: '/assets/gallery/MASTER_SRMB_BTS_190325 (1).mp4',
     poster: mediaPosterPath('bts.png'),
   },
   {
     title: 'SRMB Audition 35Sec Hindi',
-    src: mediaAssetPath('New TVC', 'SRMB AUDITION 35Sec HINDI.mp4'),
+    src: '/assets/gallery/SRMB AUDITION 35Sec HINDI.mp4',
     poster: mediaPosterPath('audition.png'),
+  },
+  {
+    title: 'SRMB Film 02 Raid',
+    src: '/assets/gallery/SRMB FILM 02 RAID 30 SEC_HD.mp4',
   },
 ];
 
@@ -283,31 +314,61 @@ export function testimonyPosterPath(fileName) {
   return `/assets/testiminoals/posters/${encodeURIComponent(fileName)}`;
 }
 
-export const testimonyVideos = [
-  { title: 'Amit Kandoi', src: testimonyAssetPath('AMIT_KANDOI_V_1.mp4'), poster: testimonyPosterPath('AMIT_KANDOI_V_1.jpg') },
-  { title: 'Arijit Chatterjee', src: testimonyAssetPath('Arijit Chatterjee.mp4'), poster: testimonyPosterPath('Arijit Chatterjee.jpg') },
-  { title: 'Ashok Roychowdhury', src: testimonyAssetPath('Ashok_Roychowdhury.mp4'), poster: testimonyPosterPath('Ashok_Roychowdhury.jpg') },
-  { title: 'Atanu Maji', src: testimonyAssetPath('ATANU_MAJI.mp4'), poster: testimonyPosterPath('ATANU_MAJI.jpg') },
-  { title: 'Biplab Saha', src: testimonyAssetPath('Biplab Saha.mp4'), poster: testimonyPosterPath('Biplab Saha.jpg') },
-  { title: 'Biswajit Sarkar', src: testimonyAssetPath('Biswajit Sarkar.mp4'), poster: testimonyPosterPath('Biswajit Sarkar.jpg') },
-  { title: 'Datta Patil', src: testimonyAssetPath('DATTA_PATIL.mp4'), poster: testimonyPosterPath('DATTA_PATIL.jpg') },
-  { title: 'Dinesh Agarwal', src: testimonyAssetPath('DINESH_AGARWAL.mp4'), poster: testimonyPosterPath('DINESH_AGARWAL.jpg') },
-  { title: 'Humayun Kabir', src: testimonyAssetPath('HUMAYUN_KABIR.mp4'), poster: testimonyPosterPath('HUMAYUN_KABIR.jpg') },
-  { title: 'Jalaluddin Ahmed', src: testimonyAssetPath('JALALUDDIN_AHMED (1).mp4'), poster: testimonyPosterPath('JALALUDDIN_AHMED (1).jpg') },
-  { title: 'Jayaanta Mandal', src: testimonyAssetPath('JAYAANTA_MANDAL.mp4'), poster: testimonyPosterPath('JAYAANTA_MANDAL.jpg') },
-  { title: 'Pranab Kr. Maity', src: testimonyAssetPath('Pranab Kr. Maity.mp4'), poster: testimonyPosterPath('Pranab Kr. Maity.jpg') },
-  { title: 'Pranay Pal', src: testimonyAssetPath('PRANAY_PAL.mp4'), poster: testimonyPosterPath('PRANAY_PAL.jpg') },
-  { title: 'Pushpendu Jana', src: testimonyAssetPath('PUSHPENDU_JANA.mp4'), poster: testimonyPosterPath('PUSHPENDU_JANA.jpg') },
-  { title: 'Raju Dutta', src: testimonyAssetPath('RAJU_DUTTA.mp4'), poster: testimonyPosterPath('RAJU_DUTTA.jpg') },
-  { title: 'Sabyasachi Rai', src: testimonyAssetPath('SABYASACHI_RAI.mp4'), poster: testimonyPosterPath('SABYASACHI_RAI.jpg') },
-  { title: 'Sayndip Bhowmik', src: testimonyAssetPath('SAYNDIP_BHOWMIK.mp4'), poster: testimonyPosterPath('SAYNDIP_BHOWMIK.jpg') },
-  { title: 'Satyajit Saha', src: testimonyAssetPath('Satyajit_Saha.mp4'), poster: testimonyPosterPath('Satyajit_Saha.jpg') },
-  { title: 'Siddique Hardware', src: testimonyAssetPath('Siddique Hardware.mp4'), poster: testimonyPosterPath('Siddique Hardware.jpg') },
-  { title: 'Somnath Nashkar', src: testimonyAssetPath('Somnath Nashkar.mp4'), poster: testimonyPosterPath('Somnath Nashkar.jpg') },
-  { title: 'Souvik Ghosh', src: testimonyAssetPath('Souvik Ghosh.mp4'), poster: testimonyPosterPath('Souvik Ghosh.jpg') },
-  { title: 'Subha Karmakar', src: testimonyAssetPath('SUBHA_KARMAKAR.mp4'), poster: testimonyPosterPath('SUBHA_KARMAKAR.jpg') },
-  { title: 'Tanishq Rathi', src: testimonyAssetPath('Tanishq Rathi.mp4'), poster: testimonyPosterPath('Tanishq Rathi.jpg') },
+export const testimonyCategories = [
+  {
+    id: 'customer',
+    label: 'Customer',
+    tagline: 'Homeowners who trust SRMB steel',
+    videos: [
+      { title: 'Biplab Saha', src: testimonyAssetPath('Biplab Saha.mp4'), poster: testimonyPosterPath('Biplab Saha.jpg') },
+      { title: 'Biswajit Sarkar', src: testimonyAssetPath('Biswajit Sarkar.mp4'), poster: testimonyPosterPath('Biswajit Sarkar.jpg') },
+      { title: 'Humayun Kabir', src: testimonyAssetPath('HUMAYUN_KABIR.mp4'), poster: testimonyPosterPath('HUMAYUN_KABIR.jpg') },
+      { title: 'Pranab Kr. Maity', src: testimonyAssetPath('Pranab Kr. Maity.mp4'), poster: testimonyPosterPath('Pranab Kr. Maity.jpg') },
+      { title: 'Raju Dutta', src: testimonyAssetPath('RAJU_DUTTA.mp4'), poster: testimonyPosterPath('RAJU_DUTTA.jpg') },
+      { title: 'Sabyasachi Rai', src: testimonyAssetPath('SABYASACHI_RAI.mp4'), poster: testimonyPosterPath('SABYASACHI_RAI.jpg') },
+      { title: 'Somnath Nashkar', src: testimonyAssetPath('Somnath Nashkar.mp4'), poster: testimonyPosterPath('Somnath Nashkar.jpg') },
+    ],
+  },
+  {
+    id: 'distributor',
+    label: 'Distributor',
+    tagline: 'Partners who carry the SRMB name forward',
+    videos: [
+      { title: 'Arijit Chatterjee', src: testimonyAssetPath('Arijit Chatterjee.mp4'), poster: testimonyPosterPath('Arijit Chatterjee.jpg') },
+      { title: 'Ashok Roychowdhury', src: testimonyAssetPath('Ashok_Roychowdhury.mp4'), poster: testimonyPosterPath('Ashok_Roychowdhury.jpg') },
+      { title: 'Jalaluddin Ahmed', src: testimonyAssetPath('JALALUDDIN_AHMED (1).mp4'), poster: testimonyPosterPath('JALALUDDIN_AHMED (1).jpg') },
+      { title: 'Satyajit Saha', src: testimonyAssetPath('Satyajit_Saha.mp4'), poster: testimonyPosterPath('Satyajit_Saha.jpg') },
+      { title: 'Siddique Hardware', src: testimonyAssetPath('Siddique Hardware.mp4'), poster: testimonyPosterPath('Siddique Hardware.jpg') },
+      { title: 'Souvik Ghosh', src: testimonyAssetPath('Souvik Ghosh.mp4'), poster: testimonyPosterPath('Souvik Ghosh.jpg') },
+      { title: 'Tanishq Rathi', src: testimonyAssetPath('Tanishq Rathi.mp4'), poster: testimonyPosterPath('Tanishq Rathi.jpg') },
+    ],
+  },
+  {
+    id: 'elite-club',
+    label: 'Elite Club',
+    tagline: 'Top-performing members of the SRMB family',
+    videos: [
+      { title: 'Jayaanta Mandal', src: testimonyAssetPath('JAYAANTA_MANDAL.mp4'), poster: testimonyPosterPath('JAYAANTA_MANDAL.jpg') },
+      { title: 'Pranay Pal', src: testimonyAssetPath('PRANAY_PAL.mp4'), poster: testimonyPosterPath('PRANAY_PAL.jpg') },
+      { title: 'Pushpendu Jana', src: testimonyAssetPath('PUSHPENDU_JANA.mp4'), poster: testimonyPosterPath('PUSHPENDU_JANA.jpg') },
+      { title: 'Sayndip Bhowmik', src: testimonyAssetPath('SAYNDIP_BHOWMIK.mp4'), poster: testimonyPosterPath('SAYNDIP_BHOWMIK.jpg') },
+      { title: 'Subha Karmakar', src: testimonyAssetPath('SUBHA_KARMAKAR.mp4'), poster: testimonyPosterPath('SUBHA_KARMAKAR.jpg') },
+    ],
+  },
+  {
+    id: 'institutional-sales',
+    label: 'Institutional Sales',
+    tagline: 'Voices from large-scale project partners',
+    videos: [
+      { title: 'Amit Kandoi', src: testimonyAssetPath('AMIT_KANDOI_V_1.mp4'), poster: testimonyPosterPath('AMIT_KANDOI_V_1.jpg') },
+      { title: 'Atanu Maji', src: testimonyAssetPath('ATANU_MAJI.mp4'), poster: testimonyPosterPath('ATANU_MAJI.jpg') },
+      { title: 'Datta Patil', src: testimonyAssetPath('DATTA_PATIL.mp4'), poster: testimonyPosterPath('DATTA_PATIL.jpg') },
+      { title: 'Dinesh Agarwal', src: testimonyAssetPath('DINESH_AGARWAL.mp4'), poster: testimonyPosterPath('DINESH_AGARWAL.jpg') },
+    ],
+  },
 ];
+
+export const testimonyVideos = testimonyCategories.flatMap((category) => category.videos);
 
 export const testimonyVideosPerSlide = 5;
 
@@ -375,27 +436,29 @@ export const projectSlides = [
   '/assets/projects/r11.jpg',
 ];
 
+export function certificateAssetPath(fileName) {
+  return `/assets/Certificates/${encodeURIComponent(fileName)}`;
+}
+
 export const certificateSlides = [
-  '/assets/Certificate/ic_certificate_bis_1786_frame.png',
-  '/assets/Certificate/ic_certificate_bis_2062_frame.png',
-  '/assets/Certificate/ic_certificate_cll_green_product_frame.png',
-  '/assets/Certificate/ic_certificate_enviromental_frame.png',
-  '/assets/Certificate/ic_certificate_jpc_frame.png',
-  '/assets/Certificate/ic_certificate_nabl_frame.png',
-  '/assets/Certificate/ic_certificate_occupational_health_frame.png',
-  '/assets/Certificate/ic_certificate_quality_management_frame.png',
+  { image: certificateAssetPath('ISO 9001.png'), title: 'ISO 9001:2015 — Quality Management System' },
+  { image: certificateAssetPath('ISO 14001.png'), title: 'ISO 14001:2015 — Environmental Management System' },
+  { image: certificateAssetPath('ISO 45001.png'), title: 'ISO 45001:2018 — Occupational Health & Safety Management' },
+  { image: certificateAssetPath('IS 1786 License.png'), title: 'BIS License — IS 1786:2008 (High Strength Deformed Steel Bars)' },
+  { image: certificateAssetPath('IS 1786 (Low alloy Steel).png'), title: 'BIS Approval — Low Alloy High Strength Deformed Steel Bars (IS 1786:2008)' },
+  { image: certificateAssetPath('IS 2062 License.png'), title: 'BIS License — IS 2062:2011 (Hot Rolled Structural Steel)' },
+  { image: certificateAssetPath('IS 7452 License.png'), title: 'BIS License — IS 7452:1990 (Hot-Rolled Steel Sections)' },
+  { image: certificateAssetPath('IS 14650 License.png'), title: 'BIS License — IS 14650:2023 (Steel Ingot & Semi-Finished Products)' },
+  { image: certificateAssetPath('NABL Certificate  Scope of Accreditation.png'), title: 'NABL Accreditation — ISO/IEC 17025:2017' },
 ];
 
 export const awardSlides = [
-  '/assets/Awards/awd1_frame.png',
-  '/assets/Awards/awd2_frame.png',
-  '/assets/Awards/awd3_frame.png',
-  '/assets/Awards/awd4_frame.png',
-  '/assets/Awards/awd5_frame.png',
-  '/assets/Awards/awd6_frame.png',
-  '/assets/Awards/awd7_frame.png',
-  '/assets/Awards/awd8_frame.png',
-  '/assets/Awards/awd9_frame.png',
+  { image: '/assets/Awards/B43.jpg', title: 'The Economic Times Best Brands 2022' },
+  { image: '/assets/Awards/P1.jpg', title: 'Uddyog-Kriti Samman — Excellence in Green Steel Leadership & Innovation' },
+  { image: '/assets/Awards/SRMB1.jpg', title: 'Manak Mahotsav 2024 — BIS Appreciation Award' },
+  { image: '/assets/Awards/p2.jpg', title: 'Times Network Gems of North East — Outstanding Contribution' },
+  { image: '/assets/Awards/pad.jpg', title: 'Estate Awards — Best Use of Technology of the Year' },
+  { image: '/assets/Awards/SRMB2.jpg', title: 'AIIFA Sustainable Steel Manufacturers Association Membership' },
 ];
 
 export function mediaAssetPath(...segments) {

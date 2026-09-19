@@ -24,6 +24,11 @@ function Remove-DistItem {
 # screens now reference the Gallery copy, so the duplicate is not packaged.
 Remove-DistItem 'assets\infrastructure'
 
+# The app reads the smaller curated testimony files from assets\testiminoals.
+# The capitalized Testimonials tree contains large duplicate source videos
+# that are not referenced by the runtime and make the installer too large.
+Remove-DistItem 'assets\Testimonials'
+
 # This legacy press-video filename is not referenced; the app uses
 # press-release-news9.mp4 instead.
 Remove-DistItem 'assets\Media Corner\Press Released\Ashish Beriwala Driving India’s Steel & Infrastructure Growth  Visionaries of Viksit Bharat #vovb - NEWS9 Live (1080p, h264).mp4'

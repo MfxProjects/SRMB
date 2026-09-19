@@ -1,5 +1,5 @@
 param(
-  [string]$Source = (Join-Path $PSScriptRoot '..\assets\applogo\download.jpg'),
+  [string]$Source = (Join-Path $PSScriptRoot '..\assets\applogo\download.png'),
   [string]$PngOutput = (Join-Path $PSScriptRoot '..\build\icon.png'),
   [string]$IcoOutput = (Join-Path $PSScriptRoot '..\build\icon.ico')
 )

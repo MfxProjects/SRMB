@@ -57,7 +57,7 @@ function resolveAppPath(url) {
   }
 
   return path.join(distRoot, 'index.html');
-}
+},,,,,,,,,                                          .
 
 function createWindow() {
   const win = new BrowserWindow({

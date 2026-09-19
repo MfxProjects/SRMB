@@ -18,6 +18,14 @@ export default function CertificatePage({ activePage = 'certificate', onNavigate
   const activeSlides = mode === 'certificates' ? certificateSlides : awardSlides;
   const pageTitle = mode === 'certificates' ? 'CERTIFICATE' : 'AWARDS';
 
+  function getSlideImage(slide) {
+    return typeof slide === 'string' ? slide : slide.image;
+  }
+
+  function getSlideTitle(slide) {
+    return typeof slide === 'string' ? '' : slide.title || '';
+  }
+
   useEffect(() => {
     if (clickTimerRef.current) {
       window.clearTimeout(clickTimerRef.current);
@@ -144,7 +152,7 @@ export default function CertificatePage({ activePage = 'certificate', onNavigate
 
   const visibleSlides = [-2, -1, 0, 1, 2].map((offset) => {
     const index = (activeIndex + offset + activeSlides.length) % activeSlides.length;
-    return { image: activeSlides[index], index, offset };
+    return { slide: activeSlides[index], index, offset };
   });
 
   return (
@@ -155,7 +163,7 @@ export default function CertificatePage({ activePage = 'certificate', onNavigate
             <h1>{pageTitle}</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -173,21 +181,21 @@ export default function CertificatePage({ activePage = 'certificate', onNavigate
             style={{ '--certificate-drag-x': `${dragDelta}px` }}
           >
             <div className="certificate-track" aria-live="polite">
-              {visibleSlides.map((slide) => (
+              {visibleSlides.map((item) => (
                 <button
-                  key={`${mode}-${slide.image}-${slide.offset}`}
-                  className={`certificate-frame offset-${slide.offset}`}
-                  data-certificate-index={slide.index}
-                  onPointerDownCapture={(event) => handleCertificatePointerDown(slide.index, event)}
-                  onClick={(event) => handleCertificateClick(slide.index, event)}
+                  key={`${mode}-${getSlideImage(item.slide)}-${item.offset}`}
+                  className={`certificate-frame offset-${item.offset} award-frame`}
+                  data-certificate-index={item.index}
+                  onPointerDownCapture={(event) => handleCertificatePointerDown(item.index, event)}
+                  onClick={(event) => handleCertificateClick(item.index, event)}
                   onDoubleClick={(event) => {
                     event.preventDefault();
-                    openCertificatePreview(slide.index);
+                    openCertificatePreview(item.index);
                   }}
                   type="button"
-                  aria-label={`Show ${mode === 'certificates' ? 'certificate' : 'award'} ${slide.index + 1}`}
+                  aria-label={`Show ${mode === 'certificates' ? 'certificate' : 'award'} ${item.index + 1}`}
                 >
-                  <img src={slide.image} alt="" draggable="false" />
+                  <img src={getSlideImage(item.slide)} alt="" draggable="false" />
                 </button>
               ))}
             </div>
@@ -195,11 +203,11 @@ export default function CertificatePage({ activePage = 'certificate', onNavigate
 
           {previewIndex !== null && (
             <aside className="certificate-preview-panel" aria-label={`Large ${mode === 'certificates' ? 'certificate' : 'award'} preview`}>
-              <div className={`certificate-preview-image-wrap ${mode === 'awards' ? 'award-preview-image-wrap' : ''}`}>
+              <div className="certificate-preview-image-wrap award-preview-image-wrap">
                 <img
                   className="certificate-preview-image"
-                  src={activeSlides[previewIndex]}
-                  alt={`${mode === 'certificates' ? 'Certificate' : 'Award'} ${previewIndex + 1}`}
+                  src={getSlideImage(activeSlides[previewIndex])}
+                  alt={getSlideTitle(activeSlides[previewIndex]) || `${mode === 'certificates' ? 'Certificate' : 'Award'} ${previewIndex + 1}`}
                   draggable="false"
                 />
                 <button

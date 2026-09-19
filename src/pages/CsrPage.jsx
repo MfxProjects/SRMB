@@ -137,7 +137,7 @@ export default function CsrPage({ onNavigate }) {
             <h1>SRMB WE CARE</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 

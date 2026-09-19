@@ -160,7 +160,7 @@ function IdleLockScreen({ currentTime, settings, customMediaUrl, onUnlock }) {
       {settings.showClock && <div className="idle-lock-shade" aria-hidden="true" />}
       {settings.showClock && (
         <div className={`idle-lock-time-card idle-clock-${settings.clockStyle}`}>
-          {settings.clockStyle === 'glass' && <img src="/assets/applogo/download.jpg" alt="SRMB" />}
+          {settings.clockStyle === 'glass' && <img src="/assets/applogo/download.png" alt="SRMB" />}
           <div>
             <strong>{formatDigitalTime(currentTime).toLowerCase().replace(/^0/, '')}</strong>
             <span>{formatLongDate(currentTime)}</span>
@@ -612,7 +612,7 @@ export default function App() {
             onContextMenu={(event) => event.preventDefault()}
             aria-label="Open SRMB welcome page. Hold for five seconds to open settings."
           >
-            <img className="brand-logo" src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img className="brand-logo" src="/assets/applogo/download.png" alt="SRMB" />
             <span className="logo-hold-indicator" aria-hidden="true" />
           </button>
 

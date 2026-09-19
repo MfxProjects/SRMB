@@ -1,6 +1,6 @@
 /* Board of Directors page: profile carousel, portrait, and director message layout. */
 .board-directors-panel {
-  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   gap: clamp(14px, 2vh, 24px);
   background:
     radial-gradient(circle at 72% 26%, rgba(233, 199, 109, 0.18), transparent 28%),
@@ -11,14 +11,21 @@
   font-size: clamp(28px, 2.18vw, 42px);
 }
 
+.board-directors-body {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+  gap: clamp(14px, 1.4vw, 26px);
+}
+
 .board-directors-stage {
   position: relative;
   min-height: 0;
+  min-width: 0;
   display: grid;
-  grid-template-columns: minmax(320px, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(20px, 1.9vw, 38px);
+  grid-template-columns: minmax(0, 1fr);
   align-items: stretch;
-  padding: clamp(18px, 1.5vw, 30px);
+  padding: clamp(10px, 0.9vw, 18px);
   border-radius: 24px;
   background:
     linear-gradient(180deg, rgba(255, 232, 152, 0.08), rgba(255, 255, 255, 0.015)),
@@ -31,6 +38,11 @@
 
 .board-directors-stage.dragging {
   cursor: grabbing;
+}
+
+.board-directors-stage.has-message {
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(16px, 1.5vw, 30px);
 }
 
 .director-message-panel,
@@ -53,21 +65,21 @@
     linear-gradient(180deg, rgba(24, 33, 48, 0.94), rgba(5, 10, 17, 0.96)),
     rgba(10, 14, 20, 0.96);
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+  overflow-y: auto;
 }
 
 .director-message-body {
   min-height: 0;
   overflow: visible;
-  padding-right: 0;
 }
 
 .director-message-body p {
-  margin: 0 0 clamp(5px, 0.54vh, 8px);
+  margin: 0 0 clamp(6px, 0.7vh, 11px);
   color: #f3efe4;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(10px, 0.66vw, 13px);
-  line-height: 1.22;
-  font-weight: 600;
+  font-size: clamp(12px, 0.8vw, 15px);
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 .director-message-body p:first-child {
@@ -80,41 +92,26 @@
   margin-bottom: 1px;
   color: #ffe287;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(12px, 0.78vw, 16px);
+  font-size: clamp(13px, 0.85vw, 17px);
   font-weight: 900;
 }
 
 .director-role-line {
   color: #f6d275 !important;
   font-family: Arial, Helvetica, sans-serif !important;
-  font-size: clamp(10px, 0.68vw, 14px) !important;
+  font-size: clamp(11px, 0.7vw, 14px) !important;
   font-weight: 800 !important;
   text-transform: uppercase;
   letter-spacing: 1.6px;
 }
 
-.director-photo-panel {
+.director-photo-panel-full {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  gap: clamp(14px, 1.4vh, 20px);
-  padding: clamp(18px, 1.55vw, 30px);
-  border-radius: 22px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02)),
-    rgba(15, 20, 29, 0.88);
-  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+  border-radius: 18px;
   overflow: hidden;
-}
-
-.director-photo-glow {
-  position: absolute;
-  inset: auto -12% 4% -12%;
-  height: 42%;
-  background: radial-gradient(ellipse at center, rgba(233, 199, 109, 0.36), transparent 68%);
-  filter: blur(8px);
-  pointer-events: none;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
 }
 
 .director-photo-frame {
@@ -123,146 +120,171 @@
   min-height: 0;
   display: grid;
   place-items: center;
-  border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(255, 226, 135, 0.13), rgba(0, 0, 0, 0.08)),
-    #05070b;
+  background: #05070b;
   overflow: hidden;
 }
 
 .director-photo-frame img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center center;
   display: block;
-  filter: contrast(1.03) saturate(1.04);
   pointer-events: none;
 }
 
-/* Size every portrait against the frame so tall and wide photos remain fully visible. */
-.director-photo-frame .director-photo-contain {
-  position: absolute;
-  inset: 0;
+.director-photo-frame .director-photo-contain-full {
   width: 100%;
   height: 100%;
-  max-width: none;
-  max-height: none;
   object-fit: contain;
   object-position: center;
 }
 
-.director-photo-frame .director-photo-mohan {
-  transform: scale(1.82);
-}
-
-.director-photo-frame .director-photo-nikunj {
-  object-position: center top;
-}
-
-.director-caption {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 5px;
-  padding: clamp(14px, 1.2vw, 20px);
-  border-radius: 16px;
-  background: rgba(4, 8, 14, 0.72);
-  text-align: center;
-}
-
-.director-caption strong {
-  color: #ffffff;
-  font-family: 'Palatino Linotype', Palatino, Constantia, Georgia, serif;
-  font-size: clamp(24px, 1.62vw, 34px);
-  line-height: 1;
-}
-
-.director-caption span {
-  color: #f7d475;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(13px, 0.82vw, 17px);
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
 .director-slide-bar {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(10px, 0.9vw, 18px);
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-
-.director-back-button,
-.director-member-tab {
-  border: 0;
-  background: rgba(255, 255, 255, 0.055);
-  color: #f5d276;
-  cursor: pointer;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.2vh, 18px);
+  padding: clamp(14px, 1.2vw, 22px);
+  border: 1px solid rgba(233, 199, 109, 0.2);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 232, 152, 0.07), rgba(255, 255, 255, 0.012)),
+    rgba(3, 8, 14, 0.58);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
 }
 
 .director-back-button {
-  width: clamp(42px, 3vw, 56px);
-  min-height: clamp(42px, 4vh, 56px);
-  display: grid;
-  place-items: center;
-  padding: 0;
-  border-radius: 10px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 0.7vw, 12px);
+  padding: clamp(10px, 0.9vh, 14px) clamp(12px, 1vw, 16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #cdd3dc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(12px, 0.78vw, 15px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background var(--motion-base, 200ms) ease, border-color var(--motion-base, 200ms) ease, color var(--motion-base, 200ms) ease;
+}
+
+.director-back-button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
 }
 
 .director-back-button svg {
-  width: clamp(22px, 1.5vw, 30px);
-  height: clamp(22px, 1.5vw, 30px);
+  width: clamp(18px, 1.2vw, 24px);
+  height: clamp(18px, 1.2vw, 24px);
   stroke-width: 2.7;
+  flex: 0 0 auto;
 }
 
 .director-member-tabs {
+  flex: 1 1 auto;
   min-width: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(8px, 0.7vw, 12px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1vh, 14px);
+  padding-right: 2px;
+  overflow-y: auto;
 }
 
 .director-member-tab {
+  position: relative;
   min-width: 0;
-  min-height: clamp(42px, 4vh, 56px);
+  flex: 0 0 auto;
   display: grid;
-  place-items: center;
-  gap: 1px;
-  padding: 6px 10px;
-  border-radius: 8px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(10px, 0.9vw, 14px);
+  padding: clamp(9px, 0.9vh, 13px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  color: #f5d276;
+  text-align: left;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: background var(--motion-base, 200ms) ease, border-color var(--motion-base, 200ms) ease, transform var(--motion-base, 200ms) ease, box-shadow var(--motion-base, 200ms) ease;
+}
+
+.director-member-tab:hover {
+  border-color: rgba(233, 199, 109, 0.4);
+  background: linear-gradient(180deg, rgba(255, 232, 152, 0.1), rgba(255, 255, 255, 0.02));
+  transform: translateX(2px);
 }
 
 .director-member-tab.active {
-  background: rgba(233, 199, 109, 0.16);
-  box-shadow: inset 0 -3px 0 #f3cc69;
+  border-color: rgba(243, 204, 105, 0.75);
+  background: linear-gradient(180deg, rgba(243, 204, 105, 0.22), rgba(233, 199, 109, 0.06));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(243, 204, 105, 0.28);
 }
 
-.director-member-tab span {
-  max-width: 100%;
+.director-member-tab-avatar {
+  width: clamp(38px, 3.1vw, 52px);
+  height: clamp(38px, 3.1vw, 52px);
+  border-radius: 50%;
   overflow: hidden;
+  border: 2px solid rgba(233, 199, 109, 0.4);
+  background: #05070b;
+  flex: 0 0 auto;
+}
+
+.director-member-tab.active .director-member-tab-avatar {
+  border-color: #f3cc69;
+  box-shadow: 0 0 0 3px rgba(243, 204, 105, 0.18);
+}
+
+.director-member-tab-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 32% 22%;
+}
+
+.director-member-tab-text {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.director-member-tab-name {
+  max-width: 100%;
   color: #ffffff;
   font-size: clamp(12px, 0.78vw, 16px);
   font-weight: 900;
-  line-height: 1.1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.2;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .director-member-tab small {
   color: #f6d275;
-  font-size: clamp(9px, 0.56vw, 12px);
+  font-size: clamp(9px, 0.58vw, 12px);
   font-weight: 900;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.director-member-tab-chevron {
+  width: clamp(14px, 1vw, 18px);
+  height: clamp(14px, 1vw, 18px);
+  color: rgba(255, 255, 255, 0.28);
+  flex: 0 0 auto;
+  transition: color var(--motion-base, 200ms) ease, transform var(--motion-base, 200ms) ease;
+}
+
+.director-member-tab:hover .director-member-tab-chevron {
+  color: rgba(255, 255, 255, 0.55);
+  transform: translateX(2px);
+}
+
+.director-member-tab.active .director-member-tab-chevron {
+  color: #f3cc69;
 }
 
 @media (min-width: 1800px) and (min-height: 950px) {
@@ -271,33 +293,15 @@
     gap: clamp(20px, 2.1vh, 46px);
   }
 
+  .board-directors-body {
+    gap: clamp(20px, 1.6vw, 40px);
+  }
+
   .board-directors-stage {
-    grid-template-columns: minmax(620px, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(38px, 2.4vw, 96px);
     padding: clamp(34px, 1.8vw, 72px);
   }
 
-  .director-message-panel,
-  .director-photo-panel {
-    padding: clamp(28px, 1.35vw, 52px);
-  }
-
-  .director-message-body p {
-    font-size: clamp(15px, 0.58vw, 22px);
-    line-height: 1.24;
-  }
-
-  .director-caption strong {
-    font-size: clamp(34px, 1.45vw, 56px);
-  }
-
-  .director-slide-bar {
-    max-width: 3200px;
-    width: 100%;
-    justify-self: center;
-  }
-
-  .director-member-tab span {
+  .director-member-tab-name {
     font-size: clamp(18px, 0.74vw, 29px);
   }
 }
@@ -305,23 +309,44 @@
 @media (max-width: 1180px) {
 
   .board-directors-panel {
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
   }
 
-  .board-directors-stage {
-    grid-template-columns: 1fr;
-    padding: 64px 18px 22px;
-  }
-
-  .director-photo-panel {
-    min-height: 420px;
+  .board-directors-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
   }
 
   .director-slide-bar {
-    grid-template-columns: auto minmax(0, 1fr);
+    flex-direction: row;
+    align-items: stretch;
   }
 
   .director-member-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .director-member-tab {
+    flex: 1 1 0;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .director-member-tab-chevron {
+    display: none;
+  }
+
+  .board-directors-stage {
+    padding: 18px;
+  }
+
+  .board-directors-stage.has-message {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(220px, 0.9fr) minmax(0, 1fr);
+  }
+
+  .director-photo-panel {
+    min-height: 320px;
   }
 }

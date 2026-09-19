@@ -10,10 +10,13 @@ import {
   Factory,
   FileText,
   Map,
+  MapPin,
 } from 'lucide-react';
 import {
+  corporateOfficeAddress,
   corporateOfficeEmbedUrl,
   corporateOfficeMapsUrl,
+  manufacturingPlantMapLinks,
   navItems,
 } from '../data/appData.jsx';
 
@@ -123,16 +126,23 @@ function VideoPanel({ startTime, endTime }) {
 }
 
 // ── Map panel ─────────────────────────────────────────────────────────────────
-function MapPanel() {
+const MAP_LOCATIONS = [
+  { name: 'Corporate Office', mapsUrl: corporateOfficeMapsUrl, embedUrl: corporateOfficeEmbedUrl, address: corporateOfficeAddress },
+  ...manufacturingPlantMapLinks,
+];
+
+function MapPanel({ activeLocationIndex }) {
+  const activeLocation = MAP_LOCATIONS[activeLocationIndex];
+
   return (
     <div className="infra-left-map">
       <div className="infra-map-toolbar">
         <span className="infra-map-label">
           <Map size={15} strokeWidth={2.4} />
-          Corporate Office — Google Maps
+          {activeLocation.name} — Google Maps
         </span>
         <a
-          href={corporateOfficeMapsUrl}
+          href={activeLocation.mapsUrl}
           target="_blank"
           rel="noreferrer"
           className="infra-map-ext-btn"
@@ -142,14 +152,26 @@ function MapPanel() {
           Open in Maps
         </a>
       </div>
-      <iframe
-        className="infra-map-iframe"
-        title="Corporate Office Location"
-        src={corporateOfficeEmbedUrl}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        allowFullScreen
-      />
+      <div className="infra-map-frame-wrap">
+        <iframe
+          key={activeLocation.name}
+          className="infra-map-iframe"
+          title={`${activeLocation.name} Location`}
+          src={activeLocation.embedUrl}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
+        <div className="infra-map-info-card" key={`card-${activeLocation.name}`}>
+          <span className="infra-map-info-pin">
+            <MapPin size={16} strokeWidth={2.4} aria-hidden="true" />
+          </span>
+          <div className="infra-map-info-body">
+            <strong>{activeLocation.name}</strong>
+            {activeLocation.address && <small>{activeLocation.address}</small>}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -284,6 +306,7 @@ function PfdPanel() {
 // ── Main page ─────────────────────────────────────────────────────────────────
 export default function InfrastructurePage({ onNavigate }) {
   const [active, setActive] = useState('corp-video');
+  const [activeLocationIndex, setActiveLocationIndex] = useState(0);
 
   // What to render in the left panel
   function renderLeft() {
@@ -293,7 +316,7 @@ export default function InfrastructurePage({ onNavigate }) {
       case 'mfg-video':
         return <VideoPanel startTime={toSec(2, 36)} endTime={toSec(3, 40)} />;
       case 'corp-maps':
-        return <MapPanel />;
+        return <MapPanel activeLocationIndex={activeLocationIndex} />;
       case 'mfg-pfd':
         return <PfdPanel />;
       default:
@@ -317,7 +340,7 @@ export default function InfrastructurePage({ onNavigate }) {
             <h1>INFRASTRUCTURE</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -343,22 +366,40 @@ export default function InfrastructurePage({ onNavigate }) {
                       const BtnIcon = btn.Icon;
                       const isActive = active === btn.id;
                       return (
-                        <button
-                          key={btn.id}
-                          type="button"
-                          className={`infra-btn infra-btn--${btn.accent}${isActive ? ' infra-btn--active' : ''}`}
-                          onClick={() => setActive(btn.id)}
-                          aria-pressed={isActive}
-                        >
-                          <span className="infra-btn__icon">
-                            <BtnIcon aria-hidden="true" />
-                          </span>
-                          <span className="infra-btn__copy">
-                            <strong>{btn.label}</strong>
-                            <small>{btn.sub}</small>
-                          </span>
-                          {isActive && <span className="infra-btn__dot" aria-hidden="true" />}
-                        </button>
+                        <React.Fragment key={btn.id}>
+                          <button
+                            type="button"
+                            className={`infra-btn infra-btn--${btn.accent}${isActive ? ' infra-btn--active' : ''}`}
+                            onClick={() => setActive(btn.id)}
+                            aria-pressed={isActive}
+                          >
+                            <span className="infra-btn__icon">
+                              <BtnIcon aria-hidden="true" />
+                            </span>
+                            <span className="infra-btn__copy">
+                              <strong>{btn.label}</strong>
+                              <small>{btn.sub}</small>
+                            </span>
+                            {isActive && <span className="infra-btn__dot" aria-hidden="true" />}
+                          </button>
+
+                          {btn.id === 'corp-maps' && isActive && (
+                            <ul className="infra-map-locations" aria-label="SRMB locations on Google Maps">
+                              {MAP_LOCATIONS.map((location, index) => (
+                                <li key={location.name}>
+                                  <button
+                                    type="button"
+                                    className={`infra-map-location-btn${index === activeLocationIndex ? ' active' : ''}`}
+                                    onClick={() => setActiveLocationIndex(index)}
+                                    aria-pressed={index === activeLocationIndex}
+                                  >
+                                    {location.name}
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </React.Fragment>
                       );
                     })}
                   </div>

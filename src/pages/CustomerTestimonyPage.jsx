@@ -2,12 +2,20 @@ import React, { useMemo, useRef, useState } from 'react';
 import '../styles/pages/CustomerTestimonyPage.css';
 import '../styles/kiosk-overrides.css';
 import { flushSync } from 'react-dom';
-import { ArrowLeft, Building2, Check, Clapperboard, ExternalLink, Factory, Gamepad2, Hammer, Landmark, Map, Mic2, Newspaper, Play, RotateCcw, ShieldCheck, Sun, Trophy, X, Zap } from 'lucide-react';
-import { sections, cards, formatHomeDateTime, formatHomeDate, formatDigitalTime, formatLongDate, formatMonthTitle, toCalendarKey, calendarEvents, getCalendarMonthData, formatMediaTime, infrastructureVideo, corporateVideo, brandAmbassadorImage, corporateOfficeMapsUrl, corporateOfficeEmbedUrl, themes, themeIds, defaultTheme, aboutPhotos, boardDirectorSlides, navItems, contactDetails, galleryVideos, testimonyAssetPath, testimonyPosterPath, testimonyVideos, testimonyVideosPerSlide, productBrochurePage, productBrochurePages, productSlides, realnailSlides, projectSlides, certificateSlides, awardSlides, mediaAssetPath, mediaPosterPath, mediaCornerSections, sectionDetails, feedbackRatings, feedbackMoodOptions } from '../data/appData.jsx';
+import { ArrowLeft, Building2, Check, Clapperboard, ExternalLink, Factory, Gamepad2, Hammer, Landmark, Map, Mic2, Newspaper, Play, RotateCcw, ShieldCheck, Sun, Trophy, Truck, Users, X, Zap } from 'lucide-react';
+import { sections, cards, formatHomeDateTime, formatHomeDate, formatDigitalTime, formatLongDate, formatMonthTitle, toCalendarKey, calendarEvents, getCalendarMonthData, formatMediaTime, infrastructureVideo, corporateVideo, brandAmbassadorImage, corporateOfficeMapsUrl, corporateOfficeEmbedUrl, themes, themeIds, defaultTheme, aboutPhotos, boardDirectorSlides, navItems, contactDetails, galleryVideos, testimonyAssetPath, testimonyPosterPath, testimonyCategories, testimonyVideos, testimonyVideosPerSlide, productBrochurePage, productBrochurePages, productSlides, realnailSlides, projectSlides, certificateSlides, awardSlides, mediaAssetPath, mediaPosterPath, mediaCornerSections, sectionDetails, feedbackRatings, feedbackMoodOptions } from '../data/appData.jsx';
 import { GoogleMapsIcon, PrimaryNav } from '../components/shared.jsx';
 
-// Browses customer videos in pages and plays the selected testimony inline.
+const testimonyCategoryIcons = {
+  customer: Users,
+  distributor: Truck,
+  'elite-club': Trophy,
+  'institutional-sales': Landmark,
+};
+
+// Browses customer videos by category and plays the selected testimony inline.
 export default function CustomerTestimonyPage({ onNavigate }) {
+  const [activeCategoryId, setActiveCategoryId] = useState(testimonyCategories[0]?.id);
   const [activeVideo, setActiveVideo] = useState(null);
   const [testimonyPage, setTestimonyPage] = useState(0);
   const [isTestimonyDragging, setIsTestimonyDragging] = useState(false);
@@ -20,15 +28,33 @@ export default function CustomerTestimonyPage({ onNavigate }) {
   const testimonyDraggingActiveRef = useRef(false);
   const isTestimonySlidebarDraggingRef = useRef(false);
   const ignoreTestimonyClickRef = useRef(false);
+
+  const activeCategory = useMemo(
+    () => testimonyCategories.find((category) => category.id === activeCategoryId) ?? testimonyCategories[0],
+    [activeCategoryId],
+  );
+
+  const activeCategoryVideos = activeCategory?.videos ?? testimonyVideos;
+
   const testimonyPages = useMemo(() => {
     const pages = [];
 
-    for (let index = 0; index < testimonyVideos.length; index += testimonyVideosPerSlide) {
-      pages.push(testimonyVideos.slice(index, index + testimonyVideosPerSlide));
+    for (let index = 0; index < activeCategoryVideos.length; index += testimonyVideosPerSlide) {
+      pages.push(activeCategoryVideos.slice(index, index + testimonyVideosPerSlide));
     }
 
     return pages;
-  }, []);
+  }, [activeCategoryVideos]);
+
+  function selectTestimonyCategory(categoryId) {
+    if (categoryId === activeCategoryId) {
+      return;
+    }
+
+    setActiveCategoryId(categoryId);
+    setTestimonyPage(0);
+    setActiveVideo(null);
+  }
 
   function clampTestimonyPage(page) {
     return Math.min(Math.max(page, 0), Math.max(testimonyPages.length - 1, 0));
@@ -204,11 +230,35 @@ export default function CustomerTestimonyPage({ onNavigate }) {
             <h1>CUSTOMER TESTIMONY</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
-        <section className="testimony-content" aria-label="Customer testimony videos">
+        <section className="testimony-content" aria-label={`${activeCategory?.label ?? 'Customer'} testimony videos`}>
+          <div className="testimony-category-tabs" role="tablist" aria-label="Testimony categories">
+            {testimonyCategories.map((category) => {
+              const CategoryIcon = testimonyCategoryIcons[category.id] ?? Users;
+              const isActive = category.id === activeCategoryId;
+
+              return (
+                <button
+                  type="button"
+                  key={category.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`testimony-category-tab ${isActive ? 'active' : ''}`}
+                  onClick={() => selectTestimonyCategory(category.id)}
+                >
+                  <span className="testimony-category-tab-icon" aria-hidden="true">
+                    <CategoryIcon strokeWidth={2} />
+                  </span>
+                  <span className="testimony-category-tab-label">{category.label}</span>
+                  <span className="testimony-category-tab-count">{category.videos.length}</span>
+                </button>
+              );
+            })}
+          </div>
+
           <div className="testimony-slider-shell">
             <div
               className={`testimony-slider ${isTestimonyDragging ? 'dragging' : ''}`}

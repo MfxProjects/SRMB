@@ -18,7 +18,7 @@ export default function SimpleSectionPage({ page, details, onNavigate }) {
             <h1>{details.title}</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 

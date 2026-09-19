@@ -316,7 +316,7 @@ export default function GroupCompaniesPage({ onNavigate }) {
             <h1>GROUP OF COMPANIES</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 

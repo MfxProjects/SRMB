@@ -121,6 +121,13 @@
   transform: translateY(-1px);
 }
 
+.infra-map-frame-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
 .infra-map-iframe {
   flex: 1;
   width: 100%;
@@ -128,6 +135,102 @@
   display: block;
   background: #e8e5dc;
   min-height: 0;
+}
+
+.infra-map-info-card {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  max-width: min(280px, calc(100% - 32px));
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  animation: infra-map-card-pop 220ms ease both;
+}
+
+.infra-map-info-pin {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ea4335;
+  color: #ffffff;
+  margin-top: 1px;
+}
+
+.infra-map-info-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.infra-map-info-body strong {
+  color: #1f1f1f;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.infra-map-info-body small {
+  color: #5f6368;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+@keyframes infra-map-card-pop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.infra-map-locations {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: -2px 0 0;
+  padding: 4px 4px 2px 18px;
+  list-style: none;
+}
+
+.infra-map-location-btn {
+  width: 100%;
+  border: 1px solid rgba(232, 188, 103, 0.26);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 244, 216, 0.68);
+  padding: 4px 11px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(9.5px, 0.58vw, 11px);
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.infra-map-location-btn:hover {
+  border-color: rgba(232, 188, 103, 0.5);
+  color: var(--soft-gold);
+}
+
+.infra-map-location-btn.active {
+  background: rgba(232, 188, 103, 0.18);
+  border-color: rgba(232, 188, 103, 0.6);
+  color: var(--soft-gold);
+}
+
+.infra-map-location-btn.active {
+  color: var(--soft-gold);
 }
 
 /* ── PFD panel ──────────────────────────────────────────────── */

@@ -239,14 +239,6 @@
   user-select: none;
 }
 
-.sustainability-certificate-stage {
-  grid-template-rows: minmax(0, 1fr);
-}
-
-.sustainability-certificate-stage .sustainability-viewer {
-  grid-row: 1;
-}
-
 .certificate-viewer {
   display: block;
   padding: 0;

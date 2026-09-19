@@ -100,7 +100,7 @@ export default function ContactPage({ onNavigate }) {
             <h1>FEEDBACK</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 

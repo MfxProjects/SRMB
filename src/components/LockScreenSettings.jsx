@@ -470,7 +470,7 @@ export default function LockScreenSettings({
               <X size={16} />
             </button>
 
-            <img className="exit-password-logo" src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img className="exit-password-logo" src="/assets/applogo/download.png" alt="SRMB" />
 
             <div className="exit-password-top">
               <h3 id="exit-password-title" className="exit-password-title">Exit code</h3>

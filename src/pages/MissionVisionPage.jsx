@@ -14,7 +14,7 @@ export default function MissionVisionPage({ onNavigate }) {
             <h1>MISSION &amp; VISION</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 

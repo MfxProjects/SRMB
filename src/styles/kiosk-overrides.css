@@ -367,9 +367,12 @@
     overflow: hidden !important;
   }
 
-  .board-directors-panel,
   .mission-vision-panel {
     grid-template-rows: clamp(58px, 8vh, 92px) minmax(0, 1fr) clamp(44px, 5.6vh, 62px) clamp(76px, 10vh, 106px) !important;
+  }
+
+  .board-directors-panel {
+    grid-template-rows: clamp(58px, 8vh, 92px) minmax(0, 1fr) clamp(76px, 10vh, 106px) !important;
   }
 
   .about-header,
@@ -407,6 +410,8 @@
     justify-self: stretch;
   }
 
+  .about-page .about-logo-box,
+  .title-simple-page .about-logo-box,
   .contact-panel .about-logo-box {
     width: clamp(170px, 10vw, 230px) !important;
     height: clamp(52px, 5.5vh, 70px) !important;
@@ -415,6 +420,8 @@
     justify-self: end !important;
   }
 
+  .about-page .about-logo-box img,
+  .title-simple-page .about-logo-box img,
   .contact-panel .about-logo-box img {
     display: block !important;
     width: 100% !important;
@@ -494,15 +501,16 @@
     overflow: hidden;
   }
 
-  .director-slide-bar,
   .mission-vision-back-row {
     min-height: 0;
     height: 100%;
     padding-block: 0;
+    padding-inline: clamp(18px, 2vw, 34px);
   }
 
-  .mission-vision-back-row {
-    padding-inline: clamp(18px, 2vw, 34px);
+  .director-slide-bar {
+    min-height: 0;
+    height: 100%;
   }
 
   .director-member-tabs {
@@ -523,9 +531,12 @@
     padding: 6px 16px !important;
   }
 
-  .board-directors-panel,
   .mission-vision-panel {
     grid-template-rows: clamp(52px, 7.4vh, 64px) minmax(0, 1fr) clamp(38px, 5.4vh, 48px) clamp(64px, 10vh, 78px) !important;
+  }
+
+  .board-directors-panel {
+    grid-template-rows: clamp(52px, 7.4vh, 64px) minmax(0, 1fr) clamp(64px, 10vh, 78px) !important;
   }
 
   .about-header,
@@ -535,6 +546,8 @@
     grid-template-columns: minmax(0, 1fr) clamp(134px, 11vw, 170px);
   }
 
+  .about-page .about-logo-box,
+  .title-simple-page .about-logo-box,
   .contact-panel .about-logo-box {
     width: clamp(150px, 11vw, 190px) !important;
     height: clamp(46px, 6vh, 58px) !important;
@@ -543,6 +556,8 @@
     justify-self: end !important;
   }
 
+  .about-page .about-logo-box img,
+  .title-simple-page .about-logo-box img,
   .contact-panel .about-logo-box img {
     display: block !important;
     width: 100% !important;

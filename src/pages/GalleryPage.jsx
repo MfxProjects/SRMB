@@ -8,10 +8,23 @@ import { navItems, galleryVideos } from '../data/appData.jsx';
 export default function GalleryPage({ onNavigate }) {
   const [activeVideo, setActiveVideo] = useState(null);
   const lightboxRef = useRef(null);
+  const activeVideoRef = useRef(null);
+
+  function normalizeMediaUrl(value) {
+    try {
+      return encodeURI(decodeURI(value));
+    } catch {
+      return encodeURI(value);
+    }
+  }
 
   useEffect(() => {
     if (activeVideo && lightboxRef.current?.requestFullscreen) {
       lightboxRef.current.requestFullscreen().catch(() => {});
+    }
+
+    if (activeVideo && activeVideoRef.current?.play) {
+      activeVideoRef.current.play().catch(() => {});
     }
   }, [activeVideo]);
 
@@ -42,7 +55,7 @@ export default function GalleryPage({ onNavigate }) {
             <h1>GALLERY</h1>
           </div>
           <div className="about-logo-box">
-            <img src="/assets/applogo/download.jpg" alt="SRMB" />
+            <img src="/assets/applogo/download.png" alt="SRMB" />
           </div>
         </header>
 
@@ -56,7 +69,7 @@ export default function GalleryPage({ onNavigate }) {
               aria-label={`Play ${video.title}`}
             >
               <video
-                src={encodeURI(video.src)}
+                src={normalizeMediaUrl(video.src)}
                 poster={video.poster || undefined}
                 muted
                 autoPlay
@@ -108,7 +121,9 @@ export default function GalleryPage({ onNavigate }) {
             </button>
             <div className="gallery-lightbox-frame" onClick={(event) => event.stopPropagation()}>
               <video
-                src={encodeURI(activeVideo.src)}
+                key={activeVideo.src}
+                ref={activeVideoRef}
+                src={normalizeMediaUrl(activeVideo.src)}
                 controls
                 autoPlay
                 playsInline
