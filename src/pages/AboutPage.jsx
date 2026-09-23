@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import '../styles/pages/AboutPage.css';
 import '../styles/kiosk-overrides.css';
 import { corporateVideo, navItems } from '../data/appData.jsx';
+import VideoVolumeControl from '../components/VideoVolumeControl.jsx';
 
 // Company overview with the SRMB corporate film and company profile.
 export default function AboutPage({ onNavigate }) {
@@ -43,6 +44,7 @@ export default function AboutPage({ onNavigate }) {
               preload="metadata"
               aria-label="SRMB corporate video"
             />
+            <VideoVolumeControl videoRef={videoRef} mediaKey={corporateVideo} />
           </div>
 
           <article className="about-copy-card">

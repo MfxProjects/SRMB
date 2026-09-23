@@ -1,0 +1,114 @@
+/* Fixed gold palette (not the theme variable) so the control stays legible over any video frame. */
+/* Bottom-left, lifted above the native play/seek bar; bottom-right is taken by lightbox close buttons. */
+.video-volume-control {
+  position: absolute;
+  left: 12px;
+  bottom: 56px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 3px;
+  border: 1px solid rgba(233, 199, 109, 0.45);
+  border-radius: 999px;
+  background: rgba(4, 6, 10, 0.66);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  color: #e9c76d;
+  cursor: default;
+  touch-action: none;
+}
+
+/* The lock screen video has no native control bar to clear. */
+.video-volume-control.is-lock-screen {
+  left: clamp(14px, 1.4vw, 28px);
+  bottom: clamp(14px, 1.8vh, 30px);
+}
+
+.video-volume-toggle {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(233, 199, 109, 0.16);
+  color: inherit;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.video-volume-toggle:hover {
+  background: rgba(233, 199, 109, 0.28);
+}
+
+.video-volume-toggle:focus-visible,
+.video-volume-slider:focus-visible {
+  outline: 2px solid #e9c76d;
+  outline-offset: 3px;
+}
+
+.video-volume-toggle svg {
+  width: 15px;
+  height: 15px;
+}
+
+.video-volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: clamp(64px, 5.5vw, 96px);
+  height: 22px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.video-volume-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #e9c76d var(--volume-fill, 100%),
+    rgba(255, 255, 255, 0.24) var(--volume-fill, 100%)
+  );
+}
+
+.video-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border: 2px solid #e9c76d;
+  border-radius: 50%;
+  background: #fff8df;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.video-volume-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.video-volume-slider::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: #e9c76d;
+}
+
+.video-volume-slider::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: 2px solid #e9c76d;
+  border-radius: 50%;
+  background: #fff8df;
+}
+
+/* The custom control replaces the native mute button; keep the native one only in native fullscreen, where the overlay isn't shown. */
+video:not(:fullscreen)::-webkit-media-controls-mute-button,
+video:not(:fullscreen)::-webkit-media-controls-volume-slider {
+  display: none !important;
+}

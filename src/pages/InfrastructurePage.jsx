@@ -19,6 +19,7 @@ import {
   manufacturingPlantMapLinks,
   navItems,
 } from '../data/appData.jsx';
+import VideoVolumeControl from '../components/VideoVolumeControl.jsx';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const CORP_AV   = '/assets/corporate av/srmb-corporate-av-compressed.mp4';
@@ -121,6 +122,7 @@ function VideoPanel({ startTime, endTime }) {
         controls
         aria-label="Infrastructure video"
       />
+      <VideoVolumeControl videoRef={videoRef} mediaKey={CORP_AV} />
     </div>
   );
 }

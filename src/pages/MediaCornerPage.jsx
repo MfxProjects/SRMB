@@ -5,6 +5,7 @@ import { flushSync } from 'react-dom';
 import { ArrowLeft, Building2, Check, Clapperboard, ExternalLink, Factory, Gamepad2, Hammer, Landmark, Map, Mic2, Newspaper, Play, RotateCcw, ShieldCheck, Sun, Trophy, X, Zap } from 'lucide-react';
 import { sections, cards, formatHomeDateTime, formatHomeDate, formatDigitalTime, formatLongDate, formatMonthTitle, toCalendarKey, calendarEvents, getCalendarMonthData, formatMediaTime, infrastructureVideo, corporateVideo, brandAmbassadorImage, corporateOfficeMapsUrl, corporateOfficeEmbedUrl, themes, themeIds, defaultTheme, aboutPhotos, boardDirectorSlides, navItems, contactDetails, galleryVideos, testimonyAssetPath, testimonyPosterPath, testimonyVideos, testimonyVideosPerSlide, productBrochurePage, productBrochurePages, productSlides, realnailSlides, projectSlides, certificateSlides, awardSlides, mediaAssetPath, mediaPosterPath, mediaCornerSections, sectionDetails, feedbackRatings, feedbackMoodOptions } from '../data/appData.jsx';
 import { GoogleMapsIcon, PrimaryNav } from '../components/shared.jsx';
+import VideoVolumeControl from '../components/VideoVolumeControl.jsx';
 
 // Categorized media player for TV commercials, press coverage, and talk shows.
 export default function MediaCornerPage({ onNavigate }) {
@@ -169,6 +170,7 @@ export default function MediaCornerPage({ onNavigate }) {
                     setVideoError('This video could not be loaded. Please check the file in Media Corner folder.');
                   }}
                 />
+                <VideoVolumeControl videoRef={videoRef} mediaKey={activeVideo.src} />
                 {isVideoLoading && !videoError && <span className="media-video-loading">Loading video...</span>}
                 {videoError && <span className="media-video-error">{videoError}</span>}
               </div>

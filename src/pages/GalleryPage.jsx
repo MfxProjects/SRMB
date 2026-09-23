@@ -3,6 +3,7 @@ import '../styles/pages/GalleryPage.css';
 import '../styles/kiosk-overrides.css';
 import { Play, X } from 'lucide-react';
 import { navItems, galleryVideos } from '../data/appData.jsx';
+import VideoVolumeControl from '../components/VideoVolumeControl.jsx';
 
 // Displays campaign videos as autoplaying muted previews and opens the selected item in a full-screen player.
 export default function GalleryPage({ onNavigate }) {
@@ -128,6 +129,7 @@ export default function GalleryPage({ onNavigate }) {
                 autoPlay
                 playsInline
               />
+              <VideoVolumeControl videoRef={activeVideoRef} mediaKey={activeVideo.src} />
               <span className="gallery-lightbox-title">{activeVideo.title}</span>
             </div>
           </div>

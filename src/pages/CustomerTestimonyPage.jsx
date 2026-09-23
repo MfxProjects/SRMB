@@ -5,6 +5,7 @@ import { flushSync } from 'react-dom';
 import { ArrowLeft, Building2, Check, Clapperboard, ExternalLink, Factory, Gamepad2, Hammer, Landmark, Map, Mic2, Newspaper, Play, RotateCcw, ShieldCheck, Sun, Trophy, Truck, Users, X, Zap } from 'lucide-react';
 import { sections, cards, formatHomeDateTime, formatHomeDate, formatDigitalTime, formatLongDate, formatMonthTitle, toCalendarKey, calendarEvents, getCalendarMonthData, formatMediaTime, infrastructureVideo, corporateVideo, brandAmbassadorImage, corporateOfficeMapsUrl, corporateOfficeEmbedUrl, themes, themeIds, defaultTheme, aboutPhotos, boardDirectorSlides, navItems, contactDetails, galleryVideos, testimonyAssetPath, testimonyPosterPath, testimonyCategories, testimonyVideos, testimonyVideosPerSlide, productBrochurePage, productBrochurePages, productSlides, realnailSlides, projectSlides, certificateSlides, awardSlides, mediaAssetPath, mediaPosterPath, mediaCornerSections, sectionDetails, feedbackRatings, feedbackMoodOptions } from '../data/appData.jsx';
 import { GoogleMapsIcon, PrimaryNav } from '../components/shared.jsx';
+import VideoVolumeControl from '../components/VideoVolumeControl.jsx';
 
 const testimonyCategoryIcons = {
   customer: Users,
@@ -306,6 +307,7 @@ export default function CustomerTestimonyPage({ onNavigate }) {
                           aria-label={isActive ? undefined : `Play testimony video ${absoluteIndex + 1}: ${video.title}`}
                         >
                           {isActive ? (
+                            <>
                             <video
                               key={video.src}
                               ref={activeInlineTestimonyVideoRef}
@@ -321,6 +323,8 @@ export default function CustomerTestimonyPage({ onNavigate }) {
                               onPointerUpCapture={(event) => event.stopPropagation()}
                               onClick={(event) => event.stopPropagation()}
                             />
+                            <VideoVolumeControl videoRef={activeInlineTestimonyVideoRef} mediaKey={video.src} />
+                            </>
                           ) : (
                             <>
                               <img src={video.poster} alt="" loading="lazy" decoding="async" draggable="false" aria-hidden="true" />

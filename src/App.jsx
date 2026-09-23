@@ -4,6 +4,7 @@ import { ArrowLeft, Clapperboard, Grid3X3, Menu, MousePointerClick, Play, Sticky
 import { cards, formatDigitalTime, formatLongDate, corporateVideo, newTvcVideo, brandAmbassadorImage, themeIds, defaultTheme, sectionDetails, galleryVideos, mediaCornerSections } from './data/appData.jsx';
 import { FeatureCard, WelcomeModal, pageFromPath, pathForPage } from './components/shared.jsx';
 import LockScreenSettings from './components/LockScreenSettings.jsx';
+import VideoVolumeControl from './components/VideoVolumeControl.jsx';
 
 const LOCK_SETTINGS_KEY = 'srmb-lock-screen-settings';
 const LOCK_MEDIA_DB = 'srmb-display-settings';
@@ -126,6 +127,7 @@ function PageRoute({ component: Component, ...props }) {
 }
 
 function IdleLockScreen({ currentTime, settings, customMediaUrl, onUnlock }) {
+  const lockVideoRef = useRef(null);
   const mediaUrl = settings.mediaSource === 'custom' && customMediaUrl
     ? customMediaUrl
     : settings.mediaSource === 'new-tvc' && settings.mediaType === 'video'
@@ -145,15 +147,19 @@ function IdleLockScreen({ currentTime, settings, customMediaUrl, onUnlock }) {
       tabIndex={0}
     >
       {settings.mediaType === 'video' ? (
-        <video
-          className="idle-lock-image"
-          src={normalizeMediaUrl(mediaUrl)}
-          autoPlay
-          loop
-          muted
-          playsInline
-          onEnded={(event) => restartVideoFromBeginning(event.currentTarget)}
-        />
+        <>
+          <video
+            ref={lockVideoRef}
+            className="idle-lock-image"
+            src={normalizeMediaUrl(mediaUrl)}
+            autoPlay
+            loop
+            muted
+            playsInline
+            onEnded={(event) => restartVideoFromBeginning(event.currentTarget)}
+          />
+          <VideoVolumeControl videoRef={lockVideoRef} mediaKey={mediaUrl} className="is-lock-screen" />
+        </>
       ) : (
         <img className="idle-lock-image" src={mediaUrl} alt="SRMB lock screen" />
       )}
@@ -192,6 +198,8 @@ export default function App() {
   const [isAppDrawerOpen, setIsAppDrawerOpen] = useState(false);
   const [isHomeMediaOpen, setIsHomeMediaOpen] = useState(false);
   const [homeVideo, setHomeVideo] = useState(null);
+  const homeVideoRef = useRef(null);
+  const corporateVideoRef = useRef(null);
   const [isWelcomeOpen, setIsWelcomeOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLockScreenOpen, setIsLockScreenOpen] = useState(false);
@@ -291,7 +299,12 @@ export default function App() {
       }, lockSettings.idleSeconds * 1000);
     }
 
-    function handleActivity() {
+    function handleActivity(event) {
+      // These capture-phase listeners run before the control's own handlers, so check the target here.
+      if (event.target instanceof Element && event.target.closest('.idle-lock-screen [data-video-volume-control]')) {
+        return;
+      }
+
       setIsLockScreenOpen(false);
       startIdleTimer();
     }
@@ -581,7 +594,10 @@ export default function App() {
         <div className="home-main-layout">
           <section className={`home-brand-hero${homeVideo ? ' is-playing-media' : ''}`} aria-label={homeVideo ? `Playing ${homeVideo.title}` : 'Welcome image featuring SRMB brand ambassadors'}>
             {homeVideo ? (
-              <video key={homeVideo.src} src={normalizeMediaUrl(homeVideo.src)} controls autoPlay playsInline />
+              <>
+                <video key={homeVideo.src} ref={homeVideoRef} src={normalizeMediaUrl(homeVideo.src)} controls autoPlay playsInline />
+                <VideoVolumeControl videoRef={homeVideoRef} mediaKey={homeVideo.src} />
+              </>
             ) : (
               <img src={brandAmbassadorImage} alt="SRMB brand ambassadors welcome display" decoding="async" />
             )}
@@ -718,12 +734,14 @@ export default function App() {
             </button>
 
             <video
+              ref={corporateVideoRef}
               className="corporate-video"
               src={encodeURI(corporateVideo)}
               controls
               autoPlay
               playsInline
             />
+            <VideoVolumeControl videoRef={corporateVideoRef} mediaKey={corporateVideo} />
           </div>
         </div>
       )}
