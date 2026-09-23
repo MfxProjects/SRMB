@@ -309,8 +309,9 @@ export default function App() {
       startIdleTimer();
     }
 
+    // Don't force the lock screen closed here: this effect re-runs when Settings closes,
+    // which would instantly dismiss a manual Preview. Turning the lock off closes it in updateLockSettings.
     if (!lockSettings.enabled) {
-      setIsLockScreenOpen(false);
       return clearIdleTimer;
     }
 
