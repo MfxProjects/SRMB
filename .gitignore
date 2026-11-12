@@ -20,3 +20,7 @@ nav-icons-sheet.png
 home-candidates.png
 
 *.mp4
+
+# Web-sized copies of the videos, used only by the Vercel build
+!web-videos/**/*.mp4
+*.done
